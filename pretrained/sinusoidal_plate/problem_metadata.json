@@ -1,0 +1,69 @@
+{
+  "problem_class": "NavierPlate",
+  "coordinate_mapping": {
+    "type": "physical",
+    "computational_domain": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ]
+  },
+  "output_scale_source": "problem-specific a-priori scale",
+  "residual_normalization_enabled": true,
+  "residual_scale_source": "RMS scales from prescribed sine load, rigidity and wave numbers",
+  "residual_scales": {
+    "kinematic": [
+      0.004031441804149936,
+      0.004031441804149936
+    ],
+    "constitutive": [
+      0.01646469234187989,
+      0.01646469234187989,
+      0.008865603568704555
+    ],
+    "moment": [
+      0.07957747154594766,
+      0.07957747154594766
+    ],
+    "equilibrium": [
+      0.5
+    ]
+  },
+  "initial_network_output_scales": {
+    "w": [
+      0.005132991127342168
+    ],
+    "beta": [
+      0.016125767216599744,
+      0.016125767216599744
+    ],
+    "moment": [
+      0.06585876936751955,
+      0.06585876936751955,
+      0.03546241427481822
+    ],
+    "shear": [
+      0.31830988618379064,
+      0.31830988618379064
+    ]
+  },
+  "network_output_scales": {
+    "w": [
+      0.005132991127342168
+    ],
+    "beta": [
+      0.016125767216599744,
+      0.016125767216599744
+    ],
+    "moment": [
+      0.06585876936751955,
+      0.06585876936751955,
+      0.03546241427481822
+    ],
+    "shear": [
+      0.31830988618379064,
+      0.31830988618379064
+    ]
+  }
+}

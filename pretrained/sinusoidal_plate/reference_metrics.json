@@ -1,0 +1,242 @@
+{
+  "field_errors": [
+    {
+      "field": "w",
+      "relative_l2": 0.001021789188678076,
+      "max_absolute": 4.471652243950722e-06,
+      "normalized_linf": 0.0017423183220135884,
+      "rmse": 1.304685283457392e-06
+    },
+    {
+      "field": "beta_x",
+      "relative_l2": 0.004114661510909587,
+      "max_absolute": 5.7358340707731534e-05,
+      "normalized_linf": 0.0071138743276273125,
+      "rmse": 1.6587813131561042e-05
+    },
+    {
+      "field": "beta_y",
+      "relative_l2": 0.0035898492620732784,
+      "max_absolute": 5.336831017039006e-05,
+      "normalized_linf": 0.006619010364412692,
+      "rmse": 1.4472089276811553e-05
+    },
+    {
+      "field": "M_xx",
+      "relative_l2": 0.0054791926068510025,
+      "max_absolute": 0.00035629718331620097,
+      "normalized_linf": 0.010820037687856367,
+      "rmse": 8.976439856090011e-05
+    },
+    {
+      "field": "M_yy",
+      "relative_l2": 0.00542846456184768,
+      "max_absolute": 0.00037802197039127545,
+      "normalized_linf": 0.011479776315945241,
+      "rmse": 8.893333223842774e-05
+    },
+    {
+      "field": "M_xy",
+      "relative_l2": 0.013363484159061492,
+      "max_absolute": 0.0011671067276564674,
+      "normalized_linf": 0.06582218111896727,
+      "rmse": 0.00011906478246707598
+    },
+    {
+      "field": "Q_x",
+      "relative_l2": 0.02163986233051929,
+      "max_absolute": 0.008552324026823026,
+      "normalized_linf": 0.0537358366675734,
+      "rmse": 0.0017220242168161028
+    },
+    {
+      "field": "Q_y",
+      "relative_l2": 0.016781943364960597,
+      "max_absolute": 0.006717203184962254,
+      "normalized_linf": 0.042205432357094765,
+      "rmse": 0.0013354480928901998
+    }
+  ],
+  "peak_response": [
+    {
+      "field": "w",
+      "predicted_peak_abs": 0.002567310817539692,
+      "reference_peak_abs": 0.002566495563671084,
+      "relative_peak_error": 0.0003176525532122075,
+      "predicted_peak_x": 0.5,
+      "predicted_peak_y": 0.5,
+      "reference_peak_x": 0.5,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "beta_x",
+      "predicted_peak_abs": 0.008048285730183125,
+      "reference_peak_abs": 0.008062883608299872,
+      "relative_peak_error": 0.0018105033913326798,
+      "predicted_peak_x": 0.0,
+      "predicted_peak_y": 0.505,
+      "reference_peak_x": 0.0,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0035355339059327407
+    },
+    {
+      "field": "beta_y",
+      "predicted_peak_abs": 0.008058786392211914,
+      "reference_peak_abs": 0.008062883608299872,
+      "relative_peak_error": 0.0005081576625688146,
+      "predicted_peak_x": 0.5,
+      "predicted_peak_y": 0.0,
+      "reference_peak_x": 0.5,
+      "reference_peak_y": 0.0,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "M_xx",
+      "predicted_peak_abs": 0.03297119960188866,
+      "reference_peak_abs": 0.03292938468375978,
+      "relative_peak_error": 0.001269835999987635,
+      "predicted_peak_x": 0.505,
+      "predicted_peak_y": 0.505,
+      "reference_peak_x": 0.5,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0050000000000000044
+    },
+    {
+      "field": "M_yy",
+      "predicted_peak_abs": 0.03279072046279907,
+      "reference_peak_abs": 0.03292938468375978,
+      "relative_peak_error": 0.0042109569398996885,
+      "predicted_peak_x": 0.5,
+      "predicted_peak_y": 0.495,
+      "reference_peak_x": 0.5,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0035355339059327407
+    },
+    {
+      "field": "M_xy",
+      "predicted_peak_abs": 0.018898313865065575,
+      "reference_peak_abs": 0.017731207137409107,
+      "relative_peak_error": 0.06582218111896727,
+      "predicted_peak_x": 0.0,
+      "predicted_peak_y": 1.0,
+      "reference_peak_x": 0.0,
+      "reference_peak_y": 1.0,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "Q_x",
+      "predicted_peak_abs": 0.1583000123500824,
+      "reference_peak_abs": 0.15915494309189532,
+      "relative_peak_error": 0.005371688275615087,
+      "predicted_peak_x": 0.99,
+      "predicted_peak_y": 0.5,
+      "reference_peak_x": 1.0,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.007071067811865481
+    },
+    {
+      "field": "Q_y",
+      "predicted_peak_abs": 0.1580434888601303,
+      "reference_peak_abs": 0.15915494309189532,
+      "relative_peak_error": 0.006983472898628473,
+      "predicted_peak_x": 0.495,
+      "predicted_peak_y": 0.0,
+      "reference_peak_x": 0.5,
+      "reference_peak_y": 0.0,
+      "normalized_location_error": 0.0035355339059327407
+    }
+  ],
+  "center_deflection": {
+    "predicted": 0.0025673103518784046,
+    "exact": 0.002566495563671084,
+    "relative_error": 0.00031747111464130204
+  },
+  "strong_residuals": {
+    "kinematic": {
+      "rms": 1.9832861327841444e-05,
+      "max_absolute": 5.656993016600609e-05,
+      "normalized_rms": 0.0034818208595378077
+    },
+    "constitutive": {
+      "rms": 0.00016729561207881602,
+      "max_absolute": 0.000522807240486145,
+      "normalized_rms": 0.006660492665519246
+    },
+    "moment": {
+      "rms": 0.0006510490388500805,
+      "max_absolute": 0.005383436568081379,
+      "normalized_rms": 0.005784985355582793
+    },
+    "equilibrium": {
+      "rms": 0.006618026600214906,
+      "max_absolute": 0.05423688516020775,
+      "normalized_rms": 0.013074637867429099
+    }
+  },
+  "boundary_conditions": {
+    "max_abs_w": 0.0,
+    "max_abs_Mnn": 0.0
+  },
+  "global_balance": {
+    "boundary_flux": 0.40525666677136296,
+    "total_load": 0.40528473456935116,
+    "relative_error": 6.925451563829664e-05
+  },
+  "independent_weak_residuals": {
+    "kinematic": {
+      "rms": 1.9230365069233812e-06,
+      "max_moment": 2.960135680041276e-05
+    },
+    "constitutive": {
+      "rms": 1.3356304407352582e-05,
+      "max_moment": 0.00019573433382902294
+    },
+    "moment": {
+      "rms": 9.735967614687979e-05,
+      "max_moment": 0.0011187131749466062
+    },
+    "equilibrium": {
+      "rms": 0.0012892771046608686,
+      "max_moment": 0.011107048019766808
+    }
+  },
+  "quadrature_configuration": {
+    "mode": "fixed",
+    "cell_count": 64,
+    "training_order": 8
+  },
+  "coordinate_mapping": {
+    "type": "physical",
+    "computational_domain": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ]
+  },
+  "network_output_scales": {
+    "w": [
+      0.005132991127342168
+    ],
+    "beta": [
+      0.016125767216599744,
+      0.016125767216599744
+    ],
+    "moment": [
+      0.06585876936751955,
+      0.06585876936751955,
+      0.03546241427481822
+    ],
+    "shear": [
+      0.31830988618379064,
+      0.31830988618379064
+    ]
+  },
+  "validation_settings": {
+    "field_grid": 201,
+    "strong_grid": 81,
+    "test_order": 8,
+    "quadrature_order": 14
+  }
+}

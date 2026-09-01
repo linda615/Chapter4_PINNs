@@ -1,0 +1,261 @@
+{
+  "field_errors": [
+    {
+      "field": "w",
+      "relative_l2": 0.0035297130918023178,
+      "max_absolute": 4.547885521564857e-06,
+      "normalized_linf": 0.009304285999043208,
+      "rmse": 8.236694511230596e-07
+    },
+    {
+      "field": "beta_x",
+      "relative_l2": 0.02213790110390346,
+      "max_absolute": 8.688711140386938e-05,
+      "normalized_linf": 0.05890782554449273,
+      "rmse": 1.640308561473097e-05
+    },
+    {
+      "field": "beta_y",
+      "relative_l2": 0.013929873639147125,
+      "max_absolute": 3.373068526701061e-05,
+      "normalized_linf": 0.02336133372628187,
+      "rmse": 1.0269421077551897e-05
+    },
+    {
+      "field": "M_xx",
+      "relative_l2": 0.03402328137029247,
+      "max_absolute": 0.0005528978066571067,
+      "normalized_linf": 0.07703103975263319,
+      "rmse": 0.00012951515613341481
+    },
+    {
+      "field": "M_yy",
+      "relative_l2": 0.01677635756361811,
+      "max_absolute": 0.0005915172544943906,
+      "normalized_linf": 0.03197616961707272,
+      "rmse": 0.00013941144553839338
+    },
+    {
+      "field": "M_xy",
+      "relative_l2": 0.03421855194524597,
+      "max_absolute": 0.0005011338268057714,
+      "normalized_linf": 0.07263631680604436,
+      "rmse": 0.00011909806981137023
+    },
+    {
+      "field": "Q_x",
+      "relative_l2": 0.09641206115895258,
+      "max_absolute": 0.01542927591657681,
+      "normalized_linf": 0.23169770967930112,
+      "rmse": 0.0032617385713340297
+    },
+    {
+      "field": "Q_y",
+      "relative_l2": 0.043069251219632364,
+      "max_absolute": 0.011300808075666816,
+      "normalized_linf": 0.08943325163129416,
+      "rmse": 0.0027105239404433493
+    }
+  ],
+  "peak_response": [
+    {
+      "field": "w",
+      "predicted_peak_abs": 0.0004883349174633622,
+      "reference_peak_abs": 0.0004887946825831162,
+      "relative_peak_error": 0.0009406099046009877,
+      "predicted_peak_x": 0.56,
+      "predicted_peak_y": 0.495,
+      "reference_peak_x": 0.5650000000000001,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0050000000000000044
+    },
+    {
+      "field": "beta_x",
+      "predicted_peak_abs": 0.001487208530306816,
+      "reference_peak_abs": 0.0014749672153191948,
+      "relative_peak_error": 0.008299381071308917,
+      "predicted_peak_x": 1.0,
+      "predicted_peak_y": 0.505,
+      "reference_peak_x": 1.0,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0035355339059327407
+    },
+    {
+      "field": "beta_y",
+      "predicted_peak_abs": 0.0014443701365962625,
+      "reference_peak_abs": 0.0014438681310846159,
+      "relative_peak_error": 0.0003476809972040004,
+      "predicted_peak_x": 0.545,
+      "predicted_peak_y": 1.0,
+      "reference_peak_x": 0.525,
+      "reference_peak_y": 1.0,
+      "normalized_location_error": 0.014142135623730963
+    },
+    {
+      "field": "M_xx",
+      "predicted_peak_abs": 0.007704213727265596,
+      "reference_peak_abs": 0.007177597607829339,
+      "relative_peak_error": 0.07336941247052126,
+      "predicted_peak_x": 0.46,
+      "predicted_peak_y": 0.485,
+      "reference_peak_x": 0.445,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.015000000000000012
+    },
+    {
+      "field": "M_yy",
+      "predicted_peak_abs": 0.01792031154036522,
+      "reference_peak_abs": 0.018498690167648088,
+      "relative_peak_error": 0.03126592326490128,
+      "predicted_peak_x": 0.445,
+      "predicted_peak_y": 0.5,
+      "reference_peak_x": 0.45,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0035355339059327407
+    },
+    {
+      "field": "M_xy",
+      "predicted_peak_abs": 0.007353678345680237,
+      "reference_peak_abs": 0.006899218584333147,
+      "relative_peak_error": 0.06587119335211146,
+      "predicted_peak_x": 1.0,
+      "predicted_peak_y": 0.0,
+      "reference_peak_x": 1.0,
+      "reference_peak_y": 0.0,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "Q_x",
+      "predicted_peak_abs": 0.06747856736183167,
+      "reference_peak_abs": 0.06659226773511433,
+      "relative_peak_error": 0.01330934741917475,
+      "predicted_peak_x": 0.935,
+      "predicted_peak_y": 0.495,
+      "reference_peak_x": 0.985,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.03553167600887969
+    },
+    {
+      "field": "Q_y",
+      "predicted_peak_abs": 0.12385276705026627,
+      "reference_peak_abs": 0.1263602504609424,
+      "relative_peak_error": 0.019843925613705498,
+      "predicted_peak_x": 0.47500000000000003,
+      "predicted_peak_y": 0.01,
+      "reference_peak_x": 0.46,
+      "reference_peak_y": 0.0,
+      "normalized_location_error": 0.01274754878398197
+    }
+  ],
+  "center_deflection": {
+    "predicted": 0.0004795684653799981,
+    "exact": 0.0004777281106306602,
+    "relative_error": 0.0038523057538071117
+  },
+  "strong_residuals": {
+    "kinematic": {
+      "rms": 1.7380215714753307e-05,
+      "max_absolute": 5.9573911130428314e-05,
+      "normalized_rms": 0.016604033167761763
+    },
+    "constitutive": {
+      "rms": 8.862673698367102e-05,
+      "max_absolute": 0.0005027083680033684,
+      "normalized_rms": 0.008948684918065886
+    },
+    "moment": {
+      "rms": 0.00043139443047877023,
+      "max_absolute": 0.0025791821535676718,
+      "normalized_rms": 0.0060490306267674656
+    },
+    "equilibrium": {
+      "rms": 0.002786229394716237,
+      "max_absolute": 0.017971698194742203,
+      "normalized_rms": 0.005504501953847997
+    }
+  },
+  "boundary_conditions": {
+    "max_abs_w": 0.0,
+    "max_abs_Mnn": 0.0
+  },
+  "global_balance": {
+    "boundary_flux": 0.40510424006027645,
+    "total_load": 0.40528473456935116,
+    "relative_error": 0.00044535235028403625
+  },
+  "independent_weak_residuals": {
+    "kinematic": {
+      "rms": 1.6856070033099968e-06,
+      "max_moment": 3.529308014549315e-05
+    },
+    "constitutive": {
+      "rms": 7.161593202908989e-06,
+      "max_moment": 0.0001684159942669794
+    },
+    "moment": {
+      "rms": 6.585169467143714e-05,
+      "max_moment": 0.0009839936392381787
+    },
+    "equilibrium": {
+      "rms": 0.0007754706894047558,
+      "max_moment": 0.004675551783293486
+    }
+  },
+  "quadrature_configuration": {
+    "mode": "fixed",
+    "cell_count": 128,
+    "training_order": 8
+  },
+  "coordinate_mapping": {
+    "type": "dimensionless_unit_square",
+    "physical_domain": [
+      0.0,
+      6.0,
+      0.0,
+      3.0
+    ],
+    "computational_domain": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    "mapping": "xi=x/Lx, eta=y/Ly",
+    "aspect_ratio_Lx_over_Ly": 2.0
+  },
+  "network_output_scales": {
+    "w": [
+      0.0017598826722316006
+    ],
+    "beta": [
+      0.00552883447426277,
+      0.00552883447426277
+    ],
+    "moment": [
+      0.012158542037080534,
+      0.025836901828796135,
+      0.0091189065278104
+    ],
+    "shear": [
+      0.0954929658551372,
+      0.1909859317102744
+    ]
+  },
+  "validation_settings": {
+    "field_grid": 201,
+    "strong_grid": 81,
+    "test_order": 8,
+    "quadrature_order": 14
+  },
+  "material_heterogeneity": {
+    "normalized_rigidity_min": 0.35011554528455924,
+    "normalized_rigidity_max": 0.9999999999999911,
+    "normalized_rigidity_mean": 0.9494757917538976
+  },
+  "reference_solution": {
+    "method": "sine Ritz",
+    "modes_per_direction": 33,
+    "quadrature_order": 80,
+    "relative_algebraic_residual": 2.1449395297366622e-15
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "seed": 42,
+  "dtype": "float32",
+  "domain": {
+    "lx": 1.0,
+    "ly": 1.0,
+    "nx": 8,
+    "ny": 8
+  },
+  "physics": {
+    "problem": "navier_sine",
+    "D": 1.0,
+    "nu": 0.3,
+    "load_amplitude": 1.0,
+    "output_scale_margin": 2.0
+  },
+  "network": {
+    "width": 48,
+    "trunk_depth": 3,
+    "branch_depth": 2,
+    "branch_layout": "field",
+    "activation": "tanh",
+    "output_activation": "linear",
+    "fourier_features": {"enabled": false}
+  },
+  "weak_form": {
+    "test_order": 4,
+    "quadrature_order": 8,
+    "residual_normalization": {
+      "enabled": true,
+      "source": "problem_prior",
+      "minimum_scale": 1e-10
+    },
+    "weights": {
+      "kinematic": 1.0,
+      "constitutive": 1.0,
+      "moment": 0.2,
+      "equilibrium": 0.05
+    },
+    "weight_schedule": [
+      {"start": 1, "end": 3000, "kinematic": 1.0, "constitutive": 1.0, "moment": 0.2, "equilibrium": 0.05},
+      {"start": 3001, "end": 8000, "kinematic": 1.0, "constitutive": 1.0, "moment": 0.5, "equilibrium": 0.2},
+      {"start": 8001, "end": 12000, "kinematic": 1.0, "constitutive": 1.0, "moment": 1.0, "equilibrium": 0.5},
+      {"start": 12001, "end": 20000, "kinematic": 1.0, "constitutive": 1.0, "moment": 1.0, "equilibrium": 1.0}
+    ],
+    "weight_transition": {"type": "cosine", "epochs": 1000}
+  },
+  "training": {
+    "epochs": 20000,
+    "learning_rate": 0.001,
+    "log_every": 50,
+    "learning_rate_schedule": [
+      {"start": 1, "end": 3000, "value": 0.001},
+      {"start": 3001, "end": 7000, "value": 0.0005},
+      {"start": 7001, "end": 12000, "value": 0.0001},
+      {"start": 12001, "end": 20000, "value": 0.00003}
+    ],
+    "learning_rate_transition": {"type": "cosine", "epochs": 1000}
+  },
+  "output_dir": "runs/sinusoidal_plate"
+}

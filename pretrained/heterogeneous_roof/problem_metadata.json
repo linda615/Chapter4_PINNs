@@ -1,0 +1,98 @@
+{
+  "problem_class": "HeterogeneousRoofPlate",
+  "coordinate_mapping": {
+    "type": "dimensionless_unit_square",
+    "physical_domain": [
+      0.0,
+      6.0,
+      0.0,
+      3.0
+    ],
+    "computational_domain": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    "mapping": "xi=x/Lx, eta=y/Ly",
+    "aspect_ratio_Lx_over_Ly": 2.0
+  },
+  "output_scale_source": "prescribed-load first sine mode and prescribed minimum rigidity",
+  "residual_normalization_enabled": true,
+  "residual_scale_source": "RMS scales from prescribed load, wave numbers and minimum rigidity",
+  "residual_scales": {
+    "kinematic": [
+      0.0018429448247542569,
+      0.0018429448247542569
+    ],
+    "constitutive": [
+      0.004052847345693511,
+      0.008612300609598712,
+      0.0030396355092701336
+    ],
+    "moment": [
+      0.03183098861837907,
+      0.06366197723675814
+    ],
+    "equilibrium": [
+      0.5
+    ]
+  },
+  "initial_network_output_scales": {
+    "w": [
+      0.0017598826722316006
+    ],
+    "beta": [
+      0.00552883447426277,
+      0.00552883447426277
+    ],
+    "moment": [
+      0.012158542037080534,
+      0.025836901828796135,
+      0.0091189065278104
+    ],
+    "shear": [
+      0.0954929658551372,
+      0.1909859317102744
+    ]
+  },
+  "network_output_scales": {
+    "w": [
+      0.0017598826722316006
+    ],
+    "beta": [
+      0.00552883447426277,
+      0.00552883447426277
+    ],
+    "moment": [
+      0.012158542037080534,
+      0.025836901828796135,
+      0.0091189065278104
+    ],
+    "shear": [
+      0.0954929658551372,
+      0.1909859317102744
+    ]
+  },
+  "dimensional_recovery_scales": {
+    "w": [
+      0.0432
+    ],
+    "beta": [
+      0.007200000000000001,
+      0.014400000000000001
+    ],
+    "moment": [
+      18000000.0,
+      18000000.0,
+      18000000.0
+    ],
+    "shear": [
+      3000000.0,
+      3000000.0
+    ],
+    "load": [
+      500000.0
+    ]
+  }
+}
