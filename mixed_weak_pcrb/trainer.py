@@ -17,7 +17,7 @@ PHYSICS_KEYS = ("kinematic", "constitutive", "moment", "equilibrium")
 
 
 class Trainer:
-    """Train PCRS-Net with one fixed tensor-product Gauss rule."""
+    """Train PCRB-Net with one fixed tensor-product Gauss rule."""
 
     def __init__(self, config):
         self.cfg = config

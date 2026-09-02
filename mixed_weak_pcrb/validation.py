@@ -214,7 +214,7 @@ def plot_representative_fields(output, grid_shape, extent, predicted_values, ref
 
     output = Path(output)
     ny, nx = grid_shape
-    row_labels = (reference_label, "PCRS-Net预测值", "绝对误差")
+    row_labels = (reference_label, "PCRB-Net预测值", "绝对误差")
     fig, axes = plt.subplots(3, 3, figsize=(13.5, 10.5), constrained_layout=True)
     for col, idx in enumerate(REPRESENTATIVE_FIELD_INDICES):
         exact_data = reference_values[:, idx]
@@ -267,7 +267,7 @@ def plot_results(
     fig, axes = plt.subplots(2, 2, figsize=(11, 8), constrained_layout=True)
     for ax, idx in zip(axes.ravel(), (0, 1, 3, 6)):
         ax.plot(xline, line_ref[:, idx], "k-", label=problem.reference_label)
-        ax.plot(xline, line_pred[:, idx], "r--", label="PCRS-Net预测值")
+        ax.plot(xline, line_pred[:, idx], "r--", label="PCRB-Net预测值")
         transverse = r"$\eta=0.5$" if coordinate_labels[1] == r"$\eta$" else r"$y=L_y/2$"
         ax.set_title(f"{FIELD_PLOT_LABELS[idx]} 沿 {transverse} 的分布"); ax.set_xlabel(coordinate_labels[0]); ax.grid(alpha=.3); ax.legend()
     fig.savefig(output/"centerline_comparison.png", dpi=180); plt.close(fig)

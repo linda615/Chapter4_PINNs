@@ -3,12 +3,12 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from mixed_weak_pcrs.config import load_config
-from mixed_weak_pcrs.validation import evaluate
+from mixed_weak_pcrb.config import load_config
+from mixed_weak_pcrb.validation import evaluate
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Evaluate a trained PCRS-Net checkpoint.")
+    parser = argparse.ArgumentParser(description="Evaluate a trained PCRB-Net checkpoint.")
     parser.add_argument("--config", required=True, help="Path to a resolved JSON config.")
     parser.add_argument("--weights", help="Checkpoint path; defaults to pretrained/<case>.")
     parser.add_argument("--output", help="Validation output directory.")

@@ -1,4 +1,4 @@
-"""Mixed local weak-form PCRS-Net."""
+"""Mixed local weak-form PCRB-Net."""
 
 from .problem import LocalGaussianPlate, NavierPlate, build_problem
 

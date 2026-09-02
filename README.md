@@ -1,4 +1,4 @@
-# PCRS-Net fixed-quadrature reference implementation
+# PCRB-Net fixed-quadrature reference implementation
 
 This repository is a compact review artifact for a mixed local weak-form physics-informed neural network for Kirchhoff plate bending. It contains only the fixed-quadrature implementation and the three configurations used to reproduce the reported verification cases.
 

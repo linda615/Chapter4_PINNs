@@ -24,7 +24,7 @@ def build_model(width=48, trunk_depth=3, branch_depth=2, activation="tanh", lx=1
         "w": [1.0], "beta": [1.0, 1.0], "moment": [1.0, 1.0, 1.0], "shear": [1.0, 1.0]
     }
 
-    class PCRSNet(tf.keras.Model):
+    class PCRBNet(tf.keras.Model):
         def __init__(self):
             super().__init__()
             self.trunk = [tf.keras.layers.Dense(width, activation=activation) for _ in range(trunk_depth)]
@@ -81,4 +81,4 @@ def build_model(width=48, trunk_depth=3, branch_depth=2, activation="tanh", lx=1
             ], axis=1)
             return out
 
-    return PCRSNet()
+    return PCRBNet()
