@@ -17,6 +17,7 @@ env/
 runs/
 validation/
 outputs/
+derived/
 tmp/
 
 *.h5

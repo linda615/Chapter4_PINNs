@@ -16,8 +16,8 @@ def build_model(width=48, trunk_depth=3, branch_depth=2, activation="tanh", lx=1
     tf = require_tf()
     if (fourier_features or {}).get("enabled", False):
         raise ValueError("Fourier input features are not included in this review release.")
-    if branch_layout != "field":
-        raise ValueError("This review release supports the four-field branch layout only.")
+    if branch_layout not in ("field", "scalar"):
+        raise ValueError("branch_layout must be 'field' (four branches) or 'scalar' (eight branches)")
     if output_activation not in ("linear", "tanh"):
         raise ValueError("output_activation must be 'linear' or 'tanh'")
     output_scales = output_scales or {
@@ -28,12 +28,18 @@ def build_model(width=48, trunk_depth=3, branch_depth=2, activation="tanh", lx=1
         def __init__(self):
             super().__init__()
             self.trunk = [tf.keras.layers.Dense(width, activation=activation) for _ in range(trunk_depth)]
-            branch_names = ("w", "beta", "moment", "shear")
+            self.branch_layout = branch_layout
+            branch_names = (
+                ("w", "beta", "moment", "shear") if branch_layout == "field" else
+                ("w", "beta_x", "beta_y", "M_xx", "M_yy", "M_xy", "Q_x", "Q_y")
+            )
             self.branches = {
                 name: [tf.keras.layers.Dense(width, activation=activation) for _ in range(branch_depth)]
                 for name in branch_names
             }
-            head_dims = {"w": 1, "beta": 2, "moment": 3, "shear": 2}
+            head_dims = {"w": 1, "beta": 2, "moment": 3, "shear": 2} if branch_layout == "field" else {
+                name: 1 for name in branch_names
+            }
             self.heads = {name: tf.keras.layers.Dense(dim) for name, dim in head_dims.items()}
             self.scales = {
                 name: tf.constant(value, dtype=tf.as_dtype(tf.keras.backend.floatx()))[None, :]
@@ -53,9 +59,13 @@ def build_model(width=48, trunk_depth=3, branch_depth=2, activation="tanh", lx=1
                     h = h + layer(h, training=training)
                 head = self.heads[name](h, training=training)
                 branch_out[name] = head if output_activation == "linear" else tf.tanh(head)
+            if self.branch_layout == "field":
+                return {name: branch_out[name] for name in ("w", "beta", "moment", "shear")}
             return {
-                name: branch_out[name]
-                for name in ("w", "beta", "moment", "shear")
+                "w": branch_out["w"],
+                "beta": tf.concat([branch_out["beta_x"], branch_out["beta_y"]], axis=1),
+                "moment": tf.concat([branch_out["M_xx"], branch_out["M_yy"], branch_out["M_xy"]], axis=1),
+                "shear": tf.concat([branch_out["Q_x"], branch_out["Q_y"]], axis=1),
             }
 
         def call(self, xy, training=False):

@@ -1,71 +1,134 @@
-# PCRB-Net fixed-quadrature reference implementation
+# PCRB-Net for plate bending
 
-This repository is a compact review artifact for a mixed local weak-form physics-informed neural network for Kirchhoff plate bending. It contains only the fixed-quadrature implementation and the three configurations used to reproduce the reported verification cases.
+Reference implementation and numerical records for Chapter 4, *Local weak-form method for bending deformation of rock strata*. The model uses eight physical fields: deflection, two rotations, three bending moments and two shear forces. Four residual branches group these fields by physical role. The ablation configurations also support eight scalar branches.
 
-## Included method components
+## Method and cases
 
-- Four coupled output branches for deflection, rotation, bending moment, and shear force.
-- First-order mixed-variable local weak residuals.
-- Hard output transforms for homogeneous simply supported boundary conditions.
-- Physics-based output scaling and prior RMS residual normalization.
-- Fixed tensor-product Gauss–Legendre training quadrature with `G=8`.
-- Independent post-training weak-residual verification with higher-order test modes and `G=14` quadrature.
+- First-order mixed equations with local Petrov–Galerkin residuals and analytical bubble test functions.
+- Hard output transforms for the homogeneous simply supported boundary conditions used in the three cases.
+- Component-wise output scales and optional prior-RMS residual normalization.
+- Fixed tensor-product Gauss–Legendre training quadrature, `G=8`.
+- Post-training verification on independent points, an expanded test space and higher-order quadrature.
 
-The independent weak-residual check uses test-function and subdomain normalization. It is evaluated after training with fixed network parameters and does not apply the staged training weights.
+| Section | Configuration | Output activation | Reference solution |
+|---|---|---|---|
+| 4.4.2: sinusoidal load | `configs/sinusoidal_plate.json` | Linear | Single-mode Navier solution |
+| 4.4.3: local Gaussian load | `configs/local_load_plate.json` | tanh | 61 × 61 Navier series |
+| 4.4.4: heterogeneous roof | `configs/heterogeneous_roof.json` | Linear | 33 × 33 sine Ritz approximation |
 
-## Verification cases
+Hidden layers use tanh. Reference solutions are used after training for evaluation and do not supply interior training labels. Stored output scales are part of each experiment and must be retained when loading its checkpoint.
 
-- `sinusoidal_plate`: simply supported plate under sinusoidal loading.
-- `local_load_plate`: rectangular plate under a finite-width Gaussian load.
-- `heterogeneous_roof`: nonhomogeneous roof plate with a localized stiffness-reduction zone.
+## Installation
 
-Each JSON file under `configs/` is complete and self-contained. The small pretrained checkpoints and their reference metrics are under `pretrained/`.
+The experiments used Python 3.9 and TensorFlow 2.10.1. CPU records were obtained with NumPy 1.25.2; the local strong-form GPU run used NumPy 1.23.5. Networks use float32, while field-error norms accumulate in float64.
 
-## Environment
-
-The checkpoints were verified with Python 3.9.13, TensorFlow 2.10.1, NumPy 1.25.2, and Matplotlib 3.7.1.
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
+```sh
 python -m pip install -r requirements.txt
 ```
 
-## Evaluate the supplied checkpoints
+Run commands from the repository root. Evaluation defaults to CPU with TF32 disabled. GPU training requires compatible TensorFlow/CUDA libraries; the recorded strong-form run used an NVIDIA GeForce RTX 3060 Laptop GPU, CUDA 11.2 and XLA.
 
-Run these commands from the repository root:
+## Reevaluate the three supplied models
 
-```powershell
+```sh
 python evaluate.py --config configs/sinusoidal_plate.json
 python evaluate.py --config configs/local_load_plate.json
 python evaluate.py --config configs/heterogeneous_roof.json
 ```
 
-Evaluation reports and figures are written to `validation/<case>/`. The default field grid is `201 × 201`; the independent weak-residual check uses eight test modes per coordinate direction and 14-point Gauss–Legendre quadrature in each direction.
+The field grid is `201 × 201`; pointwise residuals use `81 × 81` interior points. Weak-residual verification in the expanded test space uses eight test modes per direction and `G=14`. Boundary checks use 401 points per edge, and global force balance uses a 64-point Gauss rule.
 
-For a faster installation check, reduce only the validation grids:
+Outputs in `validation/<case>/` include field and peak errors, strong and weak residuals, boundary and balance checks, field CSV files, figures and execution metadata. Reference metrics in `pretrained/<case>/` use the CPU convention of the final chapter. Checkpoint hashes and evaluation context accompany the records.
 
-```powershell
-python evaluate.py --config configs/sinusoidal_plate.json --grid-size 41 --strong-grid-size 21
+Choose a fresh directory with `--output` for another evaluation. For a short installation check:
+
+```sh
+python evaluate.py --config configs/sinusoidal_plate.json --grid-size 41 --strong-grid-size 21 --output validation/smoke_sine
 ```
 
-## Train from scratch
+Reduced grids must not replace the published metrics. Evaluator field plots use computational coordinates and fields; `physical_field_values.csv` provides dimensional quantities for mapped rectangular cases.
 
-```powershell
+## Train the weak-form models
+
+```sh
 python train.py --config configs/sinusoidal_plate.json
 python train.py --config configs/local_load_plate.json
 python train.py --config configs/heterogeneous_roof.json
 ```
 
-Training artifacts are written to `runs/<case>/`. A short smoke run can be requested without editing a configuration:
+Each configuration specifies 20,000 epochs. The final epoch is saved without selection by reference-solution error. Training defaults to CPU; use `--device gpu` for a supported GPU or `--epochs 2 --output runs/smoke_sine` for a short check. Existing nonempty output directories are rejected.
 
-```powershell
-python train.py --config configs/sinusoidal_plate.json --epochs 2
+Fresh training may differ across hardware and library builds. Reevaluate the supplied checkpoint to reproduce a particular recorded model; retraining assesses the specified training procedure.
+
+## Section 4.5: ablation and repeated runs
+
+| Model | Branches | Prior-RMS normalization | Configuration |
+|---|---:|---|---|
+| A | 4 | Enabled | `configs/ablation/A.json` |
+| B | 4 | Disabled | `configs/ablation/B.json` |
+| C | 8 | Enabled | `configs/ablation/C.json` |
+| D | 8 | Disabled | `configs/ablation/D.json` |
+
+```sh
+python train_ablation.py --config configs/ablation/B.json
+python train_ablation.py --config configs/ablation/C.json
+python train_ablation.py --config configs/seeds/seed42_normalized.json
+python train_ablation.py --config configs/seeds/seed42_unnormalized.json
 ```
 
-Because neural-network optimization can vary across hardware and software builds, small numerical differences from the supplied reference metrics are expected. The random seed, network architecture, physical parameters, loss schedules, and fixed quadrature settings are recorded in each configuration.
+The other repeat configurations use seeds `7` and `2026`. Six independent CPU runs underlie Table 4.15. Its seed-42 pair is a separate retraining batch; original A and B are excluded. Standard deviations use `ddof=1`, with `n=3` for each normalization setting.
 
-## Repository scope
+Original A is `pretrained/local_load_plate/model.weights.h5`, shared by Section 4.4.3, Tables 4.13–4.14 and the final strong/weak comparison. B–D and all six CPU repeat checkpoints are included. `metadata/manifest.json` records configurations, relative paths, hashes and training provenance.
 
-This is a restricted academic-review snapshot, not an open-source distribution. See [NOTICE.md](NOTICE.md) for the applicable terms.
+Historical B–D configurations retain inactive adaptive-quadrature fields. `train_ablation.py` accepts only fixed `G=8` with adaptation disabled, removes unused quadrature-penalty keys from runtime loss weights and records that conversion. The four active physical losses and schedules remain unchanged.
+
+Evaluate an ablation by specifying its weights:
+
+```sh
+python evaluate.py --config configs/ablation/C.json --weights pretrained/ablation_C/model.weights.h5 --output validation/ablation_C
+```
+
+## First-order strong-form comparison
+
+The strong baseline uses the same eight outputs, architecture, boundary transforms, output scales and staged optimization as the local Gaussian weak-form case. Its four equation groups are enforced pointwise. This is a first-order comparison inspired by FO-PINN, rather than a reproduction of every network and benchmark in that publication.
+
+The supplied strong checkpoint was trained for 20,000 epochs with seed 42. GPU training took **420.6679645 s**, including first graph compilation, the training loop and logging, and excluding evaluation and checkpoint saving. Original A has a historical record of **252.0723079 s**, with incomplete device/thread/compiler metadata. These records do not support a controlled speed comparison.
+
+`train_strong.py` trains a new model; `evaluate_control.py` reevaluates the archived strong checkpoint and original A on CPU:
+
+```sh
+python train_strong.py --device gpu --output runs/local_strong_new
+python evaluate_control.py --output validation/strong_control_new
+```
+
+Use `--help` for device, checkpoint and output options. Evaluation reports eight field errors, peak errors, boundary and force balance, and independent pointwise residuals normalized by common prior scales.
+
+The comparison uses different pointwise normalization from the response-based normalization in the three case tables. Training losses and these two residual conventions must not be compared directly by magnitude. Conclusions apply to this case and its complete configurations.
+
+## Regenerate tables and Figure 4.14
+
+```sh
+python reproduce_tables.py --output derived
+```
+
+This requires NumPy and Matplotlib, but no TensorFlow training. It uses numerical records in `results/`, recomputes the three-seed statistics and writes comparison tables and the independent-residual figure. The original-A comparison remains separate from the independently retrained CPU seed-42 pair.
+
+The Chapter 3 column of Table 4.3 is retained as an archived same-problem comparison record. This repository reevaluates Chapter 4 checkpoints; the Chapter 3 training implementation is outside its scope.
+
+## Verification
+
+```sh
+python -m unittest discover -s tests -v
+```
+
+Tests cover implementation properties and result consistency. Archived checkpoints, numerical records and timing metadata remain separate from fresh outputs in `runs/`, `validation/` and `derived/`.
+
+See [VERIFICATION.md](VERIFICATION.md) for the checks performed on this version.
+
+## Reference
+
+Gladstone, R. J., Nabian, M. A., Sukumar, N., Srivastava, A., and Meidani, H. (2025). *FO-PINN: A First-Order formulation for Physics-Informed Neural Networks*. Engineering Analysis with Boundary Elements, 174, 106161. https://doi.org/10.1016/j.enganabound.2025.106161
+
+## Terms
+
+This repository is supplied for academic review and verification. The existing terms in [NOTICE.md](NOTICE.md) apply.

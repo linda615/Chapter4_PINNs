@@ -1,0 +1,67 @@
+{
+  "loss_form": "first_order_eight_field_strong",
+  "problem_class": "LocalGaussianPlate",
+  "coordinate_mapping": {
+    "type": "dimensionless_unit_square",
+    "physical_domain": [
+      0.0,
+      2.0,
+      0.0,
+      1.0
+    ],
+    "computational_domain": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    "mapping": "xi=x/Lx, eta=y/Ly",
+    "aspect_ratio_Lx_over_Ly": 2.0
+  },
+  "network_output_scales": {
+    "w": [
+      0.00010798240023401291
+    ],
+    "beta": [
+      0.00045879338779873413,
+      0.0003535074816194987
+    ],
+    "moment": [
+      0.00445825905560626,
+      0.0059135690814274755,
+      0.0021842211632867982
+    ],
+    "shear": [
+      0.05640259943921891,
+      0.06603086620606778
+    ]
+  },
+  "residual_scales": {
+    "kinematic": [
+      9.587602708453935e-05,
+      9.587602708453935e-05
+    ],
+    "constitutive": [
+      0.0006626475291571627,
+      0.0012951747160799088,
+      0.00042168479128183077
+    ],
+    "moment": [
+      0.00473129229436266,
+      0.00946258458872532
+    ],
+    "equilibrium": [
+      0.14179630804334095
+    ]
+  },
+  "output_scale_source": "explicit dimensionless component scales from config.output_scale",
+  "residual_scale_source": "RMS scales from known-load first mode and prescribed Gaussian load",
+  "training_points": {
+    "type": "fixed composite Gauss nodes",
+    "count": 8192,
+    "cells": 128,
+    "order": 8,
+    "test_modes_per_axis": null
+  },
+  "loss_definition": "first_order_eight_field_strong"
+}

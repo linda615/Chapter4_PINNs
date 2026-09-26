@@ -1,0 +1,6 @@
+{
+  "epochs": 20000,
+  "elapsed_seconds": 2255.4854172,
+  "cumulative_quadrature_nodes": 163840000,
+  "nodes_per_step": 8192
+}

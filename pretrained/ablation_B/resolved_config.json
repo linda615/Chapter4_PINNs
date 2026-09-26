@@ -1,0 +1,166 @@
+{
+  "seed": 42,
+  "dtype": "float32",
+  "domain": {
+    "lx": 1.0,
+    "ly": 1.0,
+    "physical_lx": 2.0,
+    "physical_ly": 1.0,
+    "nx": 16,
+    "ny": 8
+  },
+  "physics": {
+    "problem": "local_gaussian",
+    "D": 1.0,
+    "nu": 0.3,
+    "load_amplitude": 1.0,
+    "load_center": [
+      1.0,
+      0.5
+    ],
+    "load_radius": [
+      0.16,
+      0.16
+    ],
+    "reference_terms": 61,
+    "coefficient_quadrature_order": 256,
+    "output_scale_margin": 1.5
+  },
+  "output_scale": {
+    "w": 0.00010798240023401291,
+    "beta_x": 0.00045879338779873413,
+    "beta_y": 0.0003535074816194987,
+    "M_xx": 0.00445825905560626,
+    "M_yy": 0.0059135690814274755,
+    "M_xy": 0.0021842211632867982,
+    "Q_x": 0.05640259943921891,
+    "Q_y": 0.06603086620606778
+  },
+  "network": {
+    "width": 48,
+    "trunk_depth": 3,
+    "branch_depth": 2,
+    "branch_layout": "field",
+    "activation": "tanh",
+    "output_activation": "tanh",
+    "fourier_features": {
+      "enabled": false,
+      "frequencies": [
+        1,
+        2,
+        3
+      ],
+      "include_coordinates": true
+    }
+  },
+  "weak_form": {
+    "quadrature_adapt": {
+      "enabled": false
+    },
+    "test_order": 6,
+    "residual_normalization": {
+      "enabled": false,
+      "source": "problem_prior",
+      "minimum_scale": 1e-10
+    },
+    "quadrature_order": 8,
+    "quadrature_delta": 2,
+    "quadrature_max": 12,
+    "adapt_every": 1000,
+    "adapt_warmup": 3000,
+    "adapt_tolerance": 0.05,
+    "adapt_absolute_tolerance": 1e-05,
+    "h_adapt": {
+      "enabled": false,
+      "start_epoch": 5000,
+      "adapt_every": 1000,
+      "residual_quantile": 0.9,
+      "max_depth": 2,
+      "max_cells": 256,
+      "max_refine_per_event": 8,
+      "cooldown": 1000,
+      "reset_quadrature_order": 4
+    },
+    "weights": {
+      "kinematic": 1.0,
+      "constitutive": 1.0,
+      "moment": 0.2,
+      "equilibrium": 0.05,
+      "quadrature": 0.01
+    },
+    "weight_schedule": [
+      {
+        "start": 1,
+        "end": 3000,
+        "kinematic": 1.0,
+        "constitutive": 1.0,
+        "moment": 0.2,
+        "equilibrium": 0.05,
+        "quadrature": 0.01
+      },
+      {
+        "start": 3001,
+        "end": 8000,
+        "kinematic": 1.0,
+        "constitutive": 1.0,
+        "moment": 0.5,
+        "equilibrium": 0.2,
+        "quadrature": 0.01
+      },
+      {
+        "start": 8001,
+        "end": 12000,
+        "kinematic": 1.0,
+        "constitutive": 1.0,
+        "moment": 1.0,
+        "equilibrium": 0.5,
+        "quadrature": 0.01
+      },
+      {
+        "start": 12001,
+        "end": 20000,
+        "kinematic": 1.0,
+        "constitutive": 1.0,
+        "moment": 1.0,
+        "equilibrium": 1.0,
+        "quadrature": 0.01
+      }
+    ],
+    "weight_transition": {
+      "type": "cosine",
+      "epochs": 1000
+    }
+  },
+  "training": {
+    "epochs": 20000,
+    "learning_rate": 0.001,
+    "log_every": 500,
+    "learning_rate_schedule": [
+      {
+        "start": 1,
+        "end": 3000,
+        "value": 0.001
+      },
+      {
+        "start": 3001,
+        "end": 7000,
+        "value": 0.0005
+      },
+      {
+        "start": 7001,
+        "end": 12000,
+        "value": 0.0001
+      },
+      {
+        "start": 12001,
+        "end": 20000,
+        "value": 3e-05
+      }
+    ],
+    "learning_rate_transition": {
+      "type": "cosine",
+      "epochs": 1000
+    }
+  },
+  "output_dir": "runs/ablation/B"
+}

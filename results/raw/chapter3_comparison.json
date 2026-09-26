@@ -1,0 +1,27 @@
+{
+  "evaluation_grid": "201x201",
+  "evaluation_device": "CPU",
+  "network_precision": "float32",
+  "norm_accumulation_precision": "float64",
+  "checkpoint_sha256": "abd8d56ae47684e7d1b130ccc94b642d9795ed58486176ddc29c4e225b41b113",
+  "checkpoint_selection": "retained best_validation_loss checkpoint, identical to epoch 20000 checkpoint",
+  "chapter3_to_chapter4_field_signs": {
+    "w": 1,
+    "M_xx": 1,
+    "M_yy": 1,
+    "M_xy": 1,
+    "Q_x": -1,
+    "Q_y": -1
+  },
+  "relative_l2_percent": {
+    "w": 0.32160622905586844,
+    "M_xx": 2.2810089963505753,
+    "M_yy": 1.9934972712504853,
+    "M_xy": 2.1899615007827853,
+    "Q_x": 3.849390605644137,
+    "Q_y": 4.170655382682327
+  },
+  "source_record": "experiment_archive/补充实验/same_case_chapter3_chapter4_201.csv",
+  "source_sha256": "2a60fc749b239b4f1d66638baf930222d4de2bd8a2d7440e4521a9f25ee6a5e7",
+  "transformation": "Chapter 3 error column transcribed from source CSV without rounding; missing rotation predictions remain absent"
+}

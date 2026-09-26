@@ -1,0 +1,9 @@
+model,equation_group,normalized_rms,normalized_max_absolute,unit
+strong_gpu_seed42,kinematic,0.0046024299993310275,0.01987903131863776,dimensionless ratio
+strong_gpu_seed42,constitutive,0.009382607815986838,0.0570143705018777,dimensionless ratio
+strong_gpu_seed42,moment,0.01045408902174738,0.055949718496833965,dimensionless ratio
+strong_gpu_seed42,equilibrium,0.04754962070516037,0.4271948374421025,dimensionless ratio
+original_A,kinematic,0.005203938051844004,0.02349894746191437,dimensionless ratio
+original_A,constitutive,0.010411904326823276,0.07426953878969493,dimensionless ratio
+original_A,moment,0.010622829101606357,0.06521404388320173,dimensionless ratio
+original_A,equilibrium,0.049054772051315754,0.5067232914564934,dimensionless ratio

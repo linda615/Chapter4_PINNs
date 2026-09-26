@@ -1,0 +1,18 @@
+{
+  "seed": 42,
+  "variant": "unnormalized",
+  "source_run": "normalization/seed42_unnormalized",
+  "grid": "201x201",
+  "epochs": 20000,
+  "training_seconds_recorded": 2255.4854172,
+  "relative_l2_percent": {
+    "w": 22.941315870826028,
+    "beta_x": 115.21253166342522,
+    "beta_y": 99.533557482948,
+    "M_xx": 32.204441565574264,
+    "M_yy": 22.084328434035182,
+    "M_xy": 85.15810030274058,
+    "Q_x": 35.81708555311689,
+    "Q_y": 22.477125227984402
+  }
+}

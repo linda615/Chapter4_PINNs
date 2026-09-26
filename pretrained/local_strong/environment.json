@@ -1,0 +1,26 @@
+{
+  "python": "3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:49:16) [MSC v.1929 64 bit (AMD64)]",
+  "tensorflow": "2.10.1",
+  "numpy": "1.23.5",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+  "loss_form": "first_order_eight_field_strong",
+  "device": "GPU",
+  "gpu_details": {
+    "device_name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "compute_capability": [
+      8,
+      6
+    ]
+  },
+  "tf32_enabled": false,
+  "precision": "float32",
+  "memory_growth": true,
+  "intra_op_threads": 2,
+  "inter_op_threads": 1,
+  "xla_training": true,
+  "onednn": true,
+  "seed": 42,
+  "formal_epochs": 20000,
+  "checkpoint_selection": "final epoch, without reference-based selection"
+}

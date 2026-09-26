@@ -41,7 +41,8 @@ def predict_fields(model, xy, dtype="float64", batch_size=8192):
 
 
 def field_error_metrics(predicted, exact):
-    pred, ref = flatten_fields(predicted), flatten_fields(exact)
+    pred = flatten_fields(predicted).astype(np.float64)
+    ref = flatten_fields(exact).astype(np.float64)
     rows = []
     for i, name in enumerate(FIELD_NAMES):
         error = pred[:, i]-ref[:, i]

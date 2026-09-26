@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "source_record_identifiers": "Paths beginning experiment_archive/ or historical_repository/ identify retained source records; they are relative archive identifiers, not dependencies required to reproduce tables.",
+  "packaging": "Raw numerical values are unchanged. Absolute source_run paths were replaced by logical identifiers in the six normalization records. Run metadata was assembled from retained cost, checkpoint, and environment records. Full field arrays are omitted; this package recomputes table statistics from saved metrics, not field derivatives from predictions. Published text files use LF line endings; source hashes identify the original records before packaging.",
+  "files": [
+    {
+      "file": "raw/canonical/sinusoidal.json",
+      "sha256": "d17d6909b9964f12b5b4673b8ac4b2af0f47847a47760f425b36acdbc26dccd9",
+      "source_record": "experiment_archive/补充实验/canonical_recheck/sine/validation/metrics.json",
+      "source_sha256": "8555463f81e6a7011afff376077b6abf98fde7b411a44f2b9b43896902d424db",
+      "transformation": "Line endings normalized to LF; numerical values unchanged"
+    },
+    {
+      "file": "raw/canonical/local.json",
+      "sha256": "355fe2ebbf08ef5d90db421d25af5e94473710ac903d4ecbabd99db2a949ed6e",
+      "source_record": "experiment_archive/补充实验/canonical_recheck/local/validation/metrics.json",
+      "source_sha256": "772864a137777de1cd5055d417e884e72546afea313be20c5a82eae0889816ec",
+      "transformation": "Line endings normalized to LF; numerical values unchanged"
+    },
+    {
+      "file": "raw/canonical/heterogeneous.json",
+      "sha256": "30b3941b15edc3936589ff46a3842c97c168a4a3a378ced892b8d4a2c32655f9",
+      "source_record": "experiment_archive/补充实验/canonical_recheck/hetero/validation/metrics.json",
+      "source_sha256": "7d94d36ee651a035b45228f1205638edece8f0b1476c4548c8cf81a32a1125b4",
+      "transformation": "Line endings normalized to LF; numerical values unchanged"
+    },
+    {
+      "file": "raw/ablation/A.json",
+      "sha256": "355fe2ebbf08ef5d90db421d25af5e94473710ac903d4ecbabd99db2a949ed6e",
+      "source_record": "experiment_archive/补充实验/canonical_recheck/local/validation/metrics.json",
+      "source_sha256": "772864a137777de1cd5055d417e884e72546afea313be20c5a82eae0889816ec",
+      "transformation": "Line endings normalized to LF; numerical values unchanged"
+    },
+    {
+      "file": "raw/ablation/B.json",
+      "sha256": "bf0bf8d25e8592454a52cb248abe51ce47c359c09c4a51171b2cefe7cacffabc",
+      "source_record": "experiment_archive/补充实验/ablation_recheck/B/validation/metrics.json",
+      "source_sha256": "0ec526de24c37daee09bc8933cdca15506ef3030de6838412865a2ec7431951e",
+      "transformation": "Line endings normalized to LF; numerical values unchanged"
+    },
+    {
+      "file": "raw/ablation/C.json",
+      "sha256": "7da7ef7bea5e78607ceff8a02a99a0b97d274446b1bed8096c2f82f1989f0476",
+      "source_record": "experiment_archive/补充实验/ablation_recheck/C/validation/metrics.json",
+      "source_sha256": "14a9d65ac245e2a33287671a7df82a18a053435dadc723844dfcdea59b563bc5",
+      "transformation": "Line endings normalized to LF; numerical values unchanged"
+    },
+    {
+      "file": "raw/ablation/D.json",
+      "sha256": "0e48d1e816ee580fbc5a3dc8b605169965dc0fcf141f0eb4ef54f937e9429ea2",
+      "source_record": "experiment_archive/补充实验/ablation_recheck/D/validation/metrics.json",
+      "source_sha256": "6626ef3a4113a1f6a67a66e06e40abac1f2a7e9cf0ccc281c8e5833986fe4025",
+      "transformation": "Line endings normalized to LF; numerical values unchanged"
+    },
+    {
+      "file": "raw/normalization/seed42_normalized.json",
+      "sha256": "fa8a1c850f17e64853e11ecf801ab946e66399902b42d5d258430c3c5d5afc98",
+      "source_record": "experiment_archive/补充实验/seed_metrics/seed42_normalized_rerun.json",
+      "source_sha256": "f1a699b9ff41a9402fd12461d9344bf983865e52aa2074ef194691b6e06c9427",
+      "transformation": "source_run replaced by logical run identifier; numerical values unchanged; line endings normalized to LF"
+    },
+    {
+      "file": "raw/normalization/seed42_unnormalized.json",
+      "sha256": "203f618bd432b445e52c82b17d0d9c9a0e409a5ff238effde869cac819cc2500",
+      "source_record": "experiment_archive/补充实验/seed_metrics/seed42_unnormalized_rerun.json",
+      "source_sha256": "c3d68c90d66d561827cd9685e1e8905f873edb10e07e1bceedbc05780f2145ac",
+      "transformation": "source_run replaced by logical run identifier; numerical values unchanged; line endings normalized to LF"
+    },
+    {
+      "file": "raw/normalization/seed7_normalized.json",
+      "sha256": "a52b132b088113d8fca57298e00ad9bee6683bee63ba4716849b08a10dfef291",
+      "source_record": "experiment_archive/补充实验/seed_metrics/seed7_normalized.json",
+      "source_sha256": "96549ed68f84df4df2851dcf95f58ea998dd0c5c73508a747b25bcb76f4e3e28",
+      "transformation": "source_run replaced by logical run identifier; numerical values unchanged; line endings normalized to LF"
+    },
+    {
+      "file": "raw/normalization/seed7_unnormalized.json",
+      "sha256": "537c7016f92ed9b6f631b2599e01cdc15a9e1cfc800bba685b31400bf3cf7c08",
+      "source_record": "experiment_archive/补充实验/seed_metrics/seed7_unnormalized.json",
+      "source_sha256": "7691dcd2e89d52bebd84dfb2a4614a54b599122d5f14548da0bd4b60a5c3a11d",
+      "transformation": "source_run replaced by logical run identifier; numerical values unchanged; line endings normalized to LF"
+    },
+    {
+      "file": "raw/normalization/seed2026_normalized.json",
+      "sha256": "ddb5be35030b391416b1e181b5c467bc28ce27d6740cbf0f50a078ab6de91445",
+      "source_record": "experiment_archive/补充实验/seed_metrics/seed2026_normalized.json",
+      "source_sha256": "199872e9fdb44cac2fa1594ee2cc5163fb9090b0f1bc82a396f9f36d7a25272a",
+      "transformation": "source_run replaced by logical run identifier; numerical values unchanged; line endings normalized to LF"
+    },
+    {
+      "file": "raw/normalization/seed2026_unnormalized.json",
+      "sha256": "6f80d5c669c71cb0c577fb401a0bd0c7070dd319780c5dd622819668c3c4cd5a",
+      "source_record": "experiment_archive/补充实验/seed_metrics/seed2026_unnormalized.json",
+      "source_sha256": "913f755151e8d18bda75cb6a109b8c0f19fd2ab2e469524c620f561a86d71077",
+      "transformation": "source_run replaced by logical run identifier; numerical values unchanged; line endings normalized to LF"
+    },
+    {
+      "file": "raw/strong_control/strong_gpu_seed42.json",
+      "sha256": "57bf6bb9e832d6e4a585dfd38abfabc9d337fb04c753247c07a35c5c27c9adb3",
+      "source_record": "experiment_archive/一阶强形式补充实验_GPU/runs/strong/seed42/validation/metrics.json",
+      "source_sha256": "92f9e9518d40c0f5aa5a71390cf68d06f63d4b24f9d27867fc5a6b25b79cde04",
+      "transformation": "Line endings normalized to LF; numerical values unchanged"
+    },
+    {
+      "file": "raw/strong_control/original_A.json",
+      "sha256": "64af5dae50a640ed78fb1aca2c282284a9b2ddf8a587325cc7f2c308551246c6",
+      "source_record": "experiment_archive/4.5节重整_统一原A/original_A/validation/metrics.json",
+      "source_sha256": "9343704d808c45232f23b742794fb085f3bdb8fcc13c1319acbefa9c64d0962d",
+      "transformation": "Line endings normalized to LF; numerical values unchanged"
+    },
+    {
+      "file": "raw/chapter3_comparison.json",
+      "sha256": "5884ceb76a7e4959b8cf8223cfbd6f8a33533cdf7a3cd302698daa833b0d2911",
+      "source_record": "experiment_archive/补充实验/same_case_chapter3_chapter4_201.csv",
+      "source_sha256": "2a60fc749b239b4f1d66638baf930222d4de2bd8a2d7440e4521a9f25ee6a5e7",
+      "transformation": "Chapter 3 error column transcribed from source CSV without rounding; missing rotation predictions remain absent; line endings normalized to LF"
+    }
+  ],
+  "run_metadata_sha256": "070c3a9b0f3bbbd285f21f88260ee3b9d5a48a34a05507a1f7692d4955c7026a",
+  "identities": {
+    "local_case": "ablation_A",
+    "table_4_13_A": "ablation_A",
+    "table_4_16_weak": "original_A",
+    "original_A": "same checkpoint as ablation_A",
+    "table_4_15_seed42": "seed42_normalized and seed42_unnormalized from the independent CPU batch; different checkpoints from A and B"
+  },
+  "strong_run_migration": {
+    "reason": "hardware acceleration before final result evaluation",
+    "unfinished_cpu_epoch": 6361,
+    "unfinished_cpu_elapsed_seconds": 1118.3849499,
+    "unfinished_cpu_history_sha256": "27d0005867e5093664b87e84b5469dabdeac935f4e1385f245e994b4ce1fdd34",
+    "new_run": "same seed42 initialization and frozen configuration, restarted on GPU for 20000 epochs",
+    "reported_result": "one completed final-epoch GPU run; interrupted CPU attempt excluded"
+  },
+  "limitations": [
+    "Three-seed normalization statistics use sample standard deviation (ddof=1); A-D and strong-control results are single runs.",
+    "The original A-D timings, six-run CPU batch timings, and new GPU strong timing come from different execution environments and are not a controlled speed comparison.",
+    "The comparison evaluates complete local weak and first-order strong configurations; single-component causal conclusions and broad method rankings are not supported."
+  ]
+}

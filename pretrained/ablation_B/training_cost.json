@@ -1,0 +1,8 @@
+{
+  "epochs": 20000,
+  "elapsed_seconds": 237.99436790000001,
+  "pretraining_elapsed_seconds": 0.0,
+  "total_workflow_elapsed_seconds": 237.9981598,
+  "cumulative_quadrature_nodes": 163840000,
+  "final_nodes_per_step": 8192
+}

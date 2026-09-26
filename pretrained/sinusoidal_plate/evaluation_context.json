@@ -1,0 +1,12 @@
+{
+  "device": "CPU",
+  "network_dtype": "float32",
+  "field_error_accumulation_dtype": "float64",
+  "field_grid": 201,
+  "strong_grid": 81,
+  "test_order": 8,
+  "quadrature_order": 14,
+  "weights_sha256": "f99bdace3b5d837fbb8554bf4dc522e8f50c1527d5ee0d66ddcd2d75989e7ae4",
+  "checkpoint_selection": "Existing final-epoch checkpoint; reevaluated without optimizer updates",
+  "section": "4.4.2"
+}

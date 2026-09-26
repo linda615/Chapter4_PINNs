@@ -1,0 +1,13 @@
+run_id,seed,parameters,epochs,training_seconds,training_device,evaluation_device,checkpoint_alias_of,note
+ablation_A,42,24056,20000,252.07230789999997,historical environment; device not recorded in retained training_cost.json,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+ablation_B,42,24056,20000,237.99436790000001,historical environment; device not recorded in retained training_cost.json,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+ablation_C,42,42872,20000,290.3784572,historical environment; device not recorded in retained training_cost.json,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+ablation_D,42,42872,20000,292.8325466,historical environment; device not recorded in retained training_cost.json,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+seed42_normalized,42,24056,20000,3646.8103716,CPU,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+seed42_unnormalized,42,24056,20000,2255.4854172,CPU,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+seed7_normalized,7,24056,20000,2246.5600431999997,CPU,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+seed7_unnormalized,7,24056,20000,3757.4608683,CPU,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+seed2026_normalized,2026,24056,20000,3737.7735741,CPU,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+seed2026_unnormalized,2026,24056,20000,3641.0215203000002,CPU,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+original_A,42,24056,20000,252.07230789999997,historical environment; device not recorded in retained training_cost.json,CPU,ablation_A,Recorded runtime; execution environments differ. Not a controlled speed comparison.
+strong_gpu_seed42,42,24056,20000,420.6679645,GPU: NVIDIA GeForce RTX 3060 Laptop GPU,CPU,,Recorded runtime; execution environments differ. Not a controlled speed comparison.

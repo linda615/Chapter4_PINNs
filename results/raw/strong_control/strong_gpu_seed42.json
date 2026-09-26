@@ -1,0 +1,308 @@
+{
+  "field_errors": [
+    {
+      "field": "w",
+      "relative_l2": 0.0031786373927815436,
+      "max_absolute": 3.045141471874602e-07,
+      "normalized_linf": 0.00423005249439296,
+      "rmse": 9.73698204797192e-08
+    },
+    {
+      "field": "beta_x",
+      "relative_l2": 0.006466022704225662,
+      "max_absolute": 1.9615104310451994e-06,
+      "normalized_linf": 0.01076396742181362,
+      "rmse": 6.671599793475274e-07
+    },
+    {
+      "field": "beta_y",
+      "relative_l2": 0.005819013962564518,
+      "max_absolute": 1.9396923135758077e-06,
+      "normalized_linf": 0.009219893602991228,
+      "rmse": 5.629911269130158e-07
+    },
+    {
+      "field": "M_xx",
+      "relative_l2": 0.015412713811432738,
+      "max_absolute": 6.07272086199373e-05,
+      "normalized_linf": 0.020431928208069668,
+      "rmse": 1.221515828242425e-05
+    },
+    {
+      "field": "M_yy",
+      "relative_l2": 0.007695832050627054,
+      "max_absolute": 5.8768287999555347e-05,
+      "normalized_linf": 0.01490681307647893,
+      "rmse": 1.020138019682962e-05
+    },
+    {
+      "field": "M_xy",
+      "relative_l2": 0.020347286221281322,
+      "max_absolute": 3.347107073520966e-05,
+      "normalized_linf": 0.04501148795134492,
+      "rmse": 9.299761273221772e-06
+    },
+    {
+      "field": "Q_x",
+      "relative_l2": 0.040006830833894225,
+      "max_absolute": 0.001450108815525021,
+      "normalized_linf": 0.06086614703294231,
+      "rmse": 0.00030343068441787663
+    },
+    {
+      "field": "Q_y",
+      "relative_l2": 0.021898949946617525,
+      "max_absolute": 0.0010713510674308993,
+      "normalized_linf": 0.039009178174219054,
+      "rmse": 0.00023042927042217574
+    }
+  ],
+  "peak_response": [
+    {
+      "field": "w",
+      "predicted_peak_abs": 7.16865251888521e-05,
+      "reference_peak_abs": 7.198826671562618e-05,
+      "relative_peak_error": 0.00419153760106545,
+      "predicted_peak_x": 0.5,
+      "predicted_peak_y": 0.5,
+      "reference_peak_x": 0.5,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "beta_x",
+      "predicted_peak_abs": 0.00018242225633002818,
+      "reference_peak_abs": 0.0001822293169589234,
+      "relative_peak_error": 0.0010587723991100674,
+      "predicted_peak_x": 0.685,
+      "predicted_peak_y": 0.5,
+      "reference_peak_x": 0.685,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "beta_y",
+      "predicted_peak_abs": 0.00021098670549690723,
+      "reference_peak_abs": 0.00021038120363411892,
+      "relative_peak_error": 0.002878117685082584,
+      "predicted_peak_x": 0.5,
+      "predicted_peak_y": 1.0,
+      "reference_peak_x": 0.5,
+      "reference_peak_y": 1.0,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "M_xx",
+      "predicted_peak_abs": 0.0029121560510247946,
+      "reference_peak_abs": 0.002972172180790693,
+      "relative_peak_error": 0.020192682696442005,
+      "predicted_peak_x": 0.5,
+      "predicted_peak_y": 0.5,
+      "reference_peak_x": 0.5,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "M_yy",
+      "predicted_peak_abs": 0.003980962559580803,
+      "reference_peak_abs": 0.003942377736813799,
+      "relative_peak_error": 0.009787195784589675,
+      "predicted_peak_x": 0.5,
+      "predicted_peak_y": 0.5,
+      "reference_peak_x": 0.5,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "M_xy",
+      "predicted_peak_abs": 0.0007389233214780688,
+      "reference_peak_abs": 0.0007436117368834851,
+      "relative_peak_error": 0.006304923890881154,
+      "predicted_peak_x": 0.715,
+      "predicted_peak_y": 0.0,
+      "reference_peak_x": 0.715,
+      "reference_peak_y": 0.0,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "Q_x",
+      "predicted_peak_abs": 0.022447360679507256,
+      "reference_peak_abs": 0.02382455414403322,
+      "relative_peak_error": 0.057805634313239755,
+      "predicted_peak_x": 0.41500000000000004,
+      "predicted_peak_y": 0.5,
+      "reference_peak_x": 0.41500000000000004,
+      "reference_peak_y": 0.5,
+      "normalized_location_error": 0.0
+    },
+    {
+      "field": "Q_y",
+      "predicted_peak_abs": 0.027719086036086082,
+      "reference_peak_abs": 0.027464076855096352,
+      "relative_peak_error": 0.009285190335549547,
+      "predicted_peak_x": 0.5,
+      "predicted_peak_y": 0.6900000000000001,
+      "reference_peak_x": 0.5,
+      "reference_peak_y": 0.6900000000000001,
+      "normalized_location_error": 0.0
+    }
+  ],
+  "center_deflection": {
+    "predicted": 7.168653246480972e-05,
+    "exact": 7.198826671562618e-05,
+    "relative_error": 0.004191436529627755
+  },
+  "strong_residuals": {
+    "kinematic": {
+      "rms": 6.240397083740535e-07,
+      "max_absolute": 1.90592254512012e-06,
+      "normalized_rms": 0.004400108223596964
+    },
+    "constitutive": {
+      "rms": 1.6878458584007543e-05,
+      "max_absolute": 6.768479943275452e-05,
+      "normalized_rms": 0.01034558108076755
+    },
+    "moment": {
+      "rms": 0.00010893065621455764,
+      "max_absolute": 0.0004735216498374939,
+      "normalized_rms": 0.00832603912131377
+    },
+    "equilibrium": {
+      "rms": 0.006742360620072721,
+      "max_absolute": 0.06057465076446533,
+      "normalized_rms": 0.04696974913519934
+    }
+  },
+  "boundary_conditions": {
+    "max_abs_w": 0.0,
+    "max_abs_Mnn": 0.0,
+    "rms_Mnn": 0.0,
+    "normalized_max_abs_Mnn": 0.0,
+    "normalized_rms_Mnn": 0.0,
+    "moment_prior_peak_scales": {
+      "x_normal_edges_Mxx": 0.0013252950583143254,
+      "y_normal_edges_Myy": 0.0025903494321598175
+    },
+    "samples_per_edge": 401,
+    "rms_definition": "pooled RMS of four uniform endpoint-inclusive edge sample arrays",
+    "normalization_source": "problem.output_scales['moment']/problem.output_scale_margin"
+  },
+  "global_balance": {
+    "boundary_flux": 0.04009882759574729,
+    "total_load": 0.04021198799463682,
+    "relative_error": 0.0028140961074748666
+  },
+  "independent_weak_residuals": {
+    "kinematic": {
+      "rms": 6.133348051662324e-08,
+      "max_absolute": 1.2751414715239662e-06
+    },
+    "constitutive": {
+      "rms": 1.3642688827530947e-06,
+      "max_absolute": 2.9657412596861832e-05
+    },
+    "moment": {
+      "rms": 1.1493381862237584e-05,
+      "max_absolute": 0.00021918107813689858
+    },
+    "equilibrium": {
+      "rms": 0.0009539663442410529,
+      "max_absolute": 0.01249643974006176
+    }
+  },
+  "quadrature_configuration": {
+    "mode": "fixed",
+    "cell_count": 128,
+    "training_order": 8,
+    "training_test_modes_per_direction": null,
+    "validation_order": 14,
+    "validation_test_modes_per_direction": 8,
+    "training_loss_form": "first_order_eight_field_strong"
+  },
+  "coordinate_mapping": {
+    "type": "dimensionless_unit_square",
+    "physical_domain": [
+      0.0,
+      2.0,
+      0.0,
+      1.0
+    ],
+    "computational_domain": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    "mapping": "xi=x/Lx, eta=y/Ly",
+    "aspect_ratio_Lx_over_Ly": 2.0
+  },
+  "network_output_scales": {
+    "w": [
+      0.00010798240023401291
+    ],
+    "beta": [
+      0.00045879338779873413,
+      0.0003535074816194987
+    ],
+    "moment": [
+      0.00445825905560626,
+      0.0059135690814274755,
+      0.0021842211632867982
+    ],
+    "shear": [
+      0.05640259943921891,
+      0.06603086620606778
+    ]
+  },
+  "validation_settings": {
+    "field_grid": 201,
+    "strong_grid": 81,
+    "test_order": 8,
+    "quadrature_order": 14
+  },
+  "method": "first_order_eight_field_strong",
+  "independent_point_residuals_prior": {
+    "kinematic": {
+      "rms_component_mean": 4.4126269926891837e-07,
+      "normalized_rms": 0.0046024299993310275,
+      "normalized_max_absolute": 0.01987903131863776
+    },
+    "constitutive": {
+      "rms_component_mean": 9.744782801135443e-06,
+      "normalized_rms": 0.009382607815986838,
+      "normalized_max_absolute": 0.0570143705018777
+    },
+    "moment": {
+      "rms_component_mean": 7.702560833422467e-05,
+      "normalized_rms": 0.01045408902174738,
+      "normalized_max_absolute": 0.055949718496833965
+    },
+    "equilibrium": {
+      "rms_component_mean": 0.0067423610016703606,
+      "normalized_rms": 0.04754962070516037,
+      "normalized_max_absolute": 0.4271948374421025
+    }
+  },
+  "point_residual_normalization": {
+    "source": "same fixed a-priori per-component scales as training; independent 81x81 interior grid",
+    "scales": {
+      "kinematic": [
+        9.587602708453935e-05,
+        9.587602708453935e-05
+      ],
+      "constitutive": [
+        0.0006626475291571627,
+        0.0012951747160799088,
+        0.00042168479128183077
+      ],
+      "moment": [
+        0.00473129229436266,
+        0.00946258458872532
+      ],
+      "equilibrium": [
+        0.14179630804334095
+      ]
+    }
+  }
+}

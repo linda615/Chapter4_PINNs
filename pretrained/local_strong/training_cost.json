@@ -1,0 +1,8 @@
+{
+  "epochs": 20000,
+  "elapsed_seconds": 420.6679645,
+  "cumulative_quadrature_nodes": 163840000,
+  "nodes_per_step": 8192,
+  "parameters": 24056,
+  "timing_scope": "training loop including first tf.function compilation, excluding validation and checkpoint save"
+}

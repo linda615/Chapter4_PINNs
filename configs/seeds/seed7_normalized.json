@@ -1,0 +1,135 @@
+{
+  "seed": 7,
+  "dtype": "float32",
+  "domain": {
+    "lx": 1.0,
+    "ly": 1.0,
+    "physical_lx": 2.0,
+    "physical_ly": 1.0,
+    "nx": 16,
+    "ny": 8
+  },
+  "physics": {
+    "problem": "local_gaussian",
+    "D": 1.0,
+    "nu": 0.3,
+    "load_amplitude": 1.0,
+    "load_center": [
+      1.0,
+      0.5
+    ],
+    "load_radius": [
+      0.16,
+      0.16
+    ],
+    "reference_terms": 61,
+    "coefficient_quadrature_order": 256,
+    "output_scale_margin": 1.5
+  },
+  "output_scale": {
+    "w": 0.00010798240023401291,
+    "beta_x": 0.00045879338779873413,
+    "beta_y": 0.0003535074816194987,
+    "M_xx": 0.00445825905560626,
+    "M_yy": 0.0059135690814274755,
+    "M_xy": 0.0021842211632867982,
+    "Q_x": 0.05640259943921891,
+    "Q_y": 0.06603086620606778
+  },
+  "network": {
+    "width": 48,
+    "trunk_depth": 3,
+    "branch_depth": 2,
+    "branch_layout": "field",
+    "activation": "tanh",
+    "output_activation": "tanh",
+    "fourier_features": {
+      "enabled": false
+    }
+  },
+  "weak_form": {
+    "test_order": 6,
+    "quadrature_order": 8,
+    "residual_normalization": {
+      "enabled": true,
+      "source": "problem_prior",
+      "minimum_scale": 1e-10
+    },
+    "weights": {
+      "kinematic": 1.0,
+      "constitutive": 1.0,
+      "moment": 0.2,
+      "equilibrium": 0.05
+    },
+    "weight_schedule": [
+      {
+        "start": 1,
+        "end": 3000,
+        "kinematic": 1.0,
+        "constitutive": 1.0,
+        "moment": 0.2,
+        "equilibrium": 0.05
+      },
+      {
+        "start": 3001,
+        "end": 8000,
+        "kinematic": 1.0,
+        "constitutive": 1.0,
+        "moment": 0.5,
+        "equilibrium": 0.2
+      },
+      {
+        "start": 8001,
+        "end": 12000,
+        "kinematic": 1.0,
+        "constitutive": 1.0,
+        "moment": 1.0,
+        "equilibrium": 0.5
+      },
+      {
+        "start": 12001,
+        "end": 20000,
+        "kinematic": 1.0,
+        "constitutive": 1.0,
+        "moment": 1.0,
+        "equilibrium": 1.0
+      }
+    ],
+    "weight_transition": {
+      "type": "cosine",
+      "epochs": 1000
+    }
+  },
+  "training": {
+    "epochs": 20000,
+    "learning_rate": 0.001,
+    "log_every": 500,
+    "learning_rate_schedule": [
+      {
+        "start": 1,
+        "end": 3000,
+        "value": 0.001
+      },
+      {
+        "start": 3001,
+        "end": 7000,
+        "value": 0.0005
+      },
+      {
+        "start": 7001,
+        "end": 12000,
+        "value": 0.0001
+      },
+      {
+        "start": 12001,
+        "end": 20000,
+        "value": 3e-05
+      }
+    ],
+    "learning_rate_transition": {
+      "type": "cosine",
+      "epochs": 1000
+    }
+  },
+  "output_dir": "runs/seeds/seed7_normalized"
+}

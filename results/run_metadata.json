@@ -1,0 +1,285 @@
+{
+  "ablation_A": {
+    "seed": 42,
+    "parameters": 24056,
+    "training_device": "historical environment; device not recorded in retained training_cost.json",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 252.07230789999997,
+      "pretraining_elapsed_seconds": 0.0,
+      "total_workflow_elapsed_seconds": 252.07819640000002,
+      "cumulative_quadrature_nodes": 163840000,
+      "final_nodes_per_step": 8192
+    },
+    "weights_sha256": "02f386991bbfc0284cb4a5c2506398c348a1f88c912b74ae3b43e6ffb46fc627",
+    "source_training_cost_record": "historical_repository/experiments/local_load_plate/runs/fixed_g8_rms_normalized/training_cost.json",
+    "source_training_cost_sha256": "6e5d28f52bbf07d912a9d840262d3c2c3b5bb66cbe184de5ab54798b181a5090",
+    "branches": 4,
+    "residual_normalization": true,
+    "checkpoint": "pretrained/local_load_plate/model.weights.h5"
+  },
+  "ablation_B": {
+    "seed": 42,
+    "parameters": 24056,
+    "training_device": "historical environment; device not recorded in retained training_cost.json",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 237.99436790000001,
+      "pretraining_elapsed_seconds": 0.0,
+      "total_workflow_elapsed_seconds": 237.9981598,
+      "cumulative_quadrature_nodes": 163840000,
+      "final_nodes_per_step": 8192
+    },
+    "weights_sha256": "eeb5ed5063d3e2d30d1590c01e2b16f718ec0355f416d31741e539b7f3de1fcf",
+    "source_training_cost_record": "historical_repository/experiments/local_load_plate/runs/ablation/no_residual_normalization/training_cost.json",
+    "source_training_cost_sha256": "41697ca3b27af279e297793cce024f9a1e846874678b66a01a7c16f1f9ecc16f",
+    "branches": 4,
+    "residual_normalization": false,
+    "checkpoint": "pretrained/ablation_B/model.weights.h5"
+  },
+  "ablation_C": {
+    "seed": 42,
+    "parameters": 42872,
+    "training_device": "historical environment; device not recorded in retained training_cost.json",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 290.3784572,
+      "pretraining_elapsed_seconds": 0.0,
+      "total_workflow_elapsed_seconds": 290.3835551,
+      "cumulative_quadrature_nodes": 163840000,
+      "final_nodes_per_step": 8192
+    },
+    "weights_sha256": "e23eaf2e09c86572631fbc342abbfe8334929828da7bd7dc00ea97f593233a0b",
+    "source_training_cost_record": "historical_repository/experiments/local_load_plate/runs/ablation/eight_branch/training_cost.json",
+    "source_training_cost_sha256": "0d757f4deb04473c5e153a6e2e4df5afd4a64640d2460ab921c75f634e024083",
+    "branches": 8,
+    "residual_normalization": true,
+    "checkpoint": "pretrained/ablation_C/model.weights.h5"
+  },
+  "ablation_D": {
+    "seed": 42,
+    "parameters": 42872,
+    "training_device": "historical environment; device not recorded in retained training_cost.json",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 292.8325466,
+      "pretraining_elapsed_seconds": 0.0,
+      "total_workflow_elapsed_seconds": 292.83522800000003,
+      "cumulative_quadrature_nodes": 163840000,
+      "final_nodes_per_step": 8192
+    },
+    "weights_sha256": "bae4bcd18d3fae36262461f33637ff742881ac222957043f09995377732923ac",
+    "source_training_cost_record": "historical_repository/experiments/local_load_plate/runs/ablation/eight_branch_no_residual_normalization/training_cost.json",
+    "source_training_cost_sha256": "eca6b89cec8a1de21ad3d318c0acf69edfa376d82e95b242e8fc6ed476087997",
+    "branches": 8,
+    "residual_normalization": false,
+    "checkpoint": "pretrained/ablation_D/model.weights.h5"
+  },
+  "seed42_normalized": {
+    "seed": 42,
+    "parameters": 24056,
+    "training_device": "CPU",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 3646.8103716,
+      "cumulative_quadrature_nodes": 163840000,
+      "nodes_per_step": 8192
+    },
+    "weights_sha256": "03f2b067f6b4980b1cad8485985485644e59c8fb05aa6cfef6be4978182d8b60",
+    "source_training_cost_record": "experiment_archive/补充实验/seed_runs_release/seed42_normalized/training_cost.json",
+    "source_training_cost_sha256": "1d0e6b726cfa1a0b6d1bfa0214485ae8d7d7f0327fc5fd4b11d81e4e545cf0e8",
+    "branches": 4,
+    "residual_normalization": true,
+    "batch": "independent six-run CPU batch",
+    "tensorflow": "2.10.1",
+    "precision": "float32",
+    "checkpoint": "pretrained/seeds/seed42_normalized/model.weights.h5"
+  },
+  "seed42_unnormalized": {
+    "seed": 42,
+    "parameters": 24056,
+    "training_device": "CPU",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 2255.4854172,
+      "cumulative_quadrature_nodes": 163840000,
+      "nodes_per_step": 8192
+    },
+    "weights_sha256": "647d1e077f6e74061fd353a4a0e564fbbd9d87706c6ec4fb2a150f53a6008fda",
+    "source_training_cost_record": "experiment_archive/补充实验/seed_runs_release/seed42_unnormalized/training_cost.json",
+    "source_training_cost_sha256": "b1b1e1d4909de0b82566c4bd324eb9307a849c66eb8829218fad6d1394e67730",
+    "branches": 4,
+    "residual_normalization": false,
+    "batch": "independent six-run CPU batch",
+    "tensorflow": "2.10.1",
+    "precision": "float32",
+    "checkpoint": "pretrained/seeds/seed42_unnormalized/model.weights.h5"
+  },
+  "seed7_normalized": {
+    "seed": 7,
+    "parameters": 24056,
+    "training_device": "CPU",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 2246.5600431999997,
+      "cumulative_quadrature_nodes": 163840000,
+      "nodes_per_step": 8192
+    },
+    "weights_sha256": "34b00faaba3a82dc8c6bc15345975c52118183cba99bf5518d8f5b3dcea9f915",
+    "source_training_cost_record": "experiment_archive/补充实验/seed_runs_release/seed7_normalized/training_cost.json",
+    "source_training_cost_sha256": "331e0f24186284f4cf062d3fd1dcd5a47a3d393ad74909a036f53158a292a51d",
+    "branches": 4,
+    "residual_normalization": true,
+    "batch": "independent six-run CPU batch",
+    "tensorflow": "2.10.1",
+    "precision": "float32",
+    "checkpoint": "pretrained/seeds/seed7_normalized/model.weights.h5"
+  },
+  "seed7_unnormalized": {
+    "seed": 7,
+    "parameters": 24056,
+    "training_device": "CPU",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 3757.4608683,
+      "cumulative_quadrature_nodes": 163840000,
+      "nodes_per_step": 8192
+    },
+    "weights_sha256": "715ee9c8a773a0d39b9d08472331c2d70e9371cdaf86069d1594f80e5c1c8783",
+    "source_training_cost_record": "experiment_archive/补充实验/seed_runs_release/seed7_unnormalized/training_cost.json",
+    "source_training_cost_sha256": "1766103f3f6e7f4ab1a5c5be2254080289f90e3f4d008c3d1ac68c88dc29e795",
+    "branches": 4,
+    "residual_normalization": false,
+    "batch": "independent six-run CPU batch",
+    "tensorflow": "2.10.1",
+    "precision": "float32",
+    "checkpoint": "pretrained/seeds/seed7_unnormalized/model.weights.h5"
+  },
+  "seed2026_normalized": {
+    "seed": 2026,
+    "parameters": 24056,
+    "training_device": "CPU",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 3737.7735741,
+      "cumulative_quadrature_nodes": 163840000,
+      "nodes_per_step": 8192
+    },
+    "weights_sha256": "ca13f7a927e249e7f6b4fd92f6af3ddb34e36f494c4a8b9223b2214680d25923",
+    "source_training_cost_record": "experiment_archive/补充实验/seed_runs_release/seed2026_normalized/training_cost.json",
+    "source_training_cost_sha256": "81771f5d6a57d90397df7ebb776d55260bb5395589220617dee2569b30c98542",
+    "branches": 4,
+    "residual_normalization": true,
+    "batch": "independent six-run CPU batch",
+    "tensorflow": "2.10.1",
+    "precision": "float32",
+    "checkpoint": "pretrained/seeds/seed2026_normalized/model.weights.h5"
+  },
+  "seed2026_unnormalized": {
+    "seed": 2026,
+    "parameters": 24056,
+    "training_device": "CPU",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 3641.0215203000002,
+      "cumulative_quadrature_nodes": 163840000,
+      "nodes_per_step": 8192
+    },
+    "weights_sha256": "153b0af8229e33dd9d83fcd4bd8563ff46c0691575d6d7fc987afeae01711fc7",
+    "source_training_cost_record": "experiment_archive/补充实验/seed_runs_release/seed2026_unnormalized/training_cost.json",
+    "source_training_cost_sha256": "7715376ab640c389781eb3b66508528b4fc0234fa8c7cc2c3721ae06dcd6a90e",
+    "branches": 4,
+    "residual_normalization": false,
+    "batch": "independent six-run CPU batch",
+    "tensorflow": "2.10.1",
+    "precision": "float32",
+    "checkpoint": "pretrained/seeds/seed2026_unnormalized/model.weights.h5"
+  },
+  "original_A": {
+    "seed": 42,
+    "parameters": 24056,
+    "training_device": "historical environment; device not recorded in retained training_cost.json",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 252.07230789999997,
+      "pretraining_elapsed_seconds": 0.0,
+      "total_workflow_elapsed_seconds": 252.07819640000002,
+      "cumulative_quadrature_nodes": 163840000,
+      "final_nodes_per_step": 8192
+    },
+    "weights_sha256": "02f386991bbfc0284cb4a5c2506398c348a1f88c912b74ae3b43e6ffb46fc627",
+    "source_training_cost_record": "historical_repository/experiments/local_load_plate/runs/fixed_g8_rms_normalized/training_cost.json",
+    "source_training_cost_sha256": "6e5d28f52bbf07d912a9d840262d3c2c3b5bb66cbe184de5ab54798b181a5090",
+    "branches": 4,
+    "residual_normalization": true,
+    "new_optimizer_updates": 0,
+    "checkpoint_alias_of": "ablation_A",
+    "checkpoint": "pretrained/local_load_plate/model.weights.h5"
+  },
+  "strong_gpu_seed42": {
+    "seed": 42,
+    "parameters": 24056,
+    "training_device": "GPU: NVIDIA GeForce RTX 3060 Laptop GPU",
+    "evaluation_device": "CPU",
+    "training_cost": {
+      "epochs": 20000,
+      "elapsed_seconds": 420.6679645,
+      "cumulative_quadrature_nodes": 163840000,
+      "nodes_per_step": 8192,
+      "parameters": 24056,
+      "timing_scope": "training loop including first tf.function compilation, excluding validation and checkpoint save"
+    },
+    "weights_sha256": "69d137649c7dbd00e6a62c57d0cdde24293e5b3e3af5de8aed45733039d5c767",
+    "source_training_cost_record": "experiment_archive/一阶强形式补充实验_GPU/runs/strong/seed42/training_cost.json",
+    "source_training_cost_sha256": "57f7d960f36b7968b06c382b9a4e4b61a01f588611088237c55e5340f640bf83",
+    "branches": 4,
+    "residual_normalization": true,
+    "training_environment": {
+      "python": "3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:49:16) [MSC v.1929 64 bit (AMD64)]",
+      "tensorflow": "2.10.1",
+      "numpy": "1.23.5",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "loss_form": "first_order_eight_field_strong",
+      "device": "GPU",
+      "gpu_details": {
+        "device_name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "compute_capability": [
+          8,
+          6
+        ]
+      },
+      "tf32_enabled": false,
+      "precision": "float32",
+      "memory_growth": true,
+      "intra_op_threads": 2,
+      "inter_op_threads": 1,
+      "xla_training": true,
+      "onednn": true,
+      "seed": 42,
+      "formal_epochs": 20000,
+      "checkpoint_selection": "final epoch, without reference-based selection"
+    },
+    "evaluation_environment": {
+      "device": "CPU",
+      "tensorflow": "2.10.1",
+      "python": "3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:49:16) [MSC v.1929 64 bit (AMD64)]",
+      "intra_op_threads": 2,
+      "inter_op_threads": 1,
+      "cuda_visible_devices": "-1",
+      "tf32_enabled": false
+    },
+    "checkpoint": "pretrained/local_strong/model.weights.h5"
+  }
+}

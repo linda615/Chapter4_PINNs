@@ -51,8 +51,6 @@ class Trainer:
         self.residual_scales, self.residual_scale_source = resolve_residual_scales(
             config, self.problem
         )
-        if self.residual_scales is None:
-            raise ValueError("Residual normalization must be enabled in this review release.")
         self.model = build_model(
             **nc,
             lx=dc["lx"],
@@ -279,8 +277,12 @@ class Trainer:
                 )
 
     def train(self, epochs=None):
-        epochs = int(epochs or self.cfg["training"]["epochs"])
+        epochs = int(self.cfg["training"]["epochs"] if epochs is None else epochs)
+        if epochs < 1:
+            raise ValueError("epochs must be positive")
         output = Path(self.cfg["output_dir"])
+        if output.exists() and any(output.iterdir()):
+            raise FileExistsError(f"Training output is not empty: {output}")
         output.mkdir(parents=True, exist_ok=True)
         (output / "resolved_config.json").write_text(
             json.dumps(self.cfg, indent=2, ensure_ascii=False), encoding="utf-8"
@@ -369,6 +371,8 @@ class Trainer:
                     "elapsed_seconds": elapsed,
                     "cumulative_quadrature_nodes": cumulative_nodes,
                     "nodes_per_step": nodes_per_step,
+                    "parameters": self.model.count_params(),
+                    "timing_scope": "training loop including first tf.function compilation and logging, excluding validation and checkpoint save",
                 },
                 indent=2,
             ),
