@@ -1,0 +1,13 @@
+{
+  "_base_": "../local_load_plate.json",
+  "output_scale": null,
+  "network": {
+    "output_activation": "linear"
+  },
+  "training": {
+    "scale_calibration": {
+      "enabled": false
+    }
+  },
+  "experiment_note": "Final matched configuration: pure problem-prior output scales (chi_f=1.5), linear output heads, no data-dependent scale calibration."
+}

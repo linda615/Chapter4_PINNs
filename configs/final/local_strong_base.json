@@ -1,0 +1,12 @@
+{
+  "_base_": "local_weak_base.json",
+  "formulation": "strong",
+  "loss_form": "first_order_eight_field_strong",
+  "strong_form": {
+    "point_set": "same 8192 composite G8 nodes as the local weak-form model",
+    "point_weights": "Gauss weights normalized by domain area",
+    "component_reduction": "mean within equation groups of 2, 3, 2 and 1 components",
+    "maximum_spatial_derivative_order": 1,
+    "comparison_note": "architecture, prior scales, boundary transforms and optimization schedule are matched to the local weak-form model"
+  }
+}

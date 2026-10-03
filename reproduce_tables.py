@@ -2,7 +2,7 @@
 
 This script does not import TensorFlow, evaluate checkpoints, or train models.
 Errors stored as ratios are converted to percent once. Normalization statistics
-use three independently trained CPU runs and sample standard deviation.
+use three independently trained runs and sample standard deviation.
 """
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ RESULTS = ROOT / "results"
 FIELDS = ("w", "beta_x", "beta_y", "M_xx", "M_yy", "M_xy", "Q_x", "Q_y")
 GROUPS = ("kinematic", "constitutive", "moment", "equilibrium")
 SEEDS = (42, 7, 2026)
+MULTISEED_RESIDUALS = RESULTS / "raw/strong_control/multiseed_prior_linear_chi1p5.csv"
 
 
 def load(relative):
@@ -35,6 +36,31 @@ def write_csv(output, name, rows):
         writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
+
+
+def load_multiseed_residuals():
+    """Read the matched final strong/weak residual comparison."""
+    with MULTISEED_RESIDUALS.open(encoding="utf-8-sig", newline="") as stream:
+        raw_rows = list(csv.DictReader(stream))
+    require(
+        set(raw_rows[0]) == {"formulation", "seed", *GROUPS},
+        "Unexpected columns in the final strong/weak residual record",
+    )
+    records = {}
+    for raw in raw_rows:
+        method = raw["formulation"]
+        seed = int(raw["seed"])
+        require(method in ("strong", "weak"), f"Unknown formulation: {method}")
+        require(seed in SEEDS, f"Unexpected random seed: {seed}")
+        key = (method, seed)
+        require(key not in records, f"Duplicate final residual record: {key}")
+        values = {group: float(raw[group]) for group in GROUPS}
+        require(all(math.isfinite(value) and value >= 0 for value in values.values()),
+                f"Invalid final residual value: {key}")
+        records[key] = values
+    expected = {(method, seed) for method in ("strong", "weak") for seed in SEEDS}
+    require(set(records) == expected, "Final residual record must contain both methods for all three seeds")
+    return records
 
 
 def field_rows(record):
@@ -105,6 +131,7 @@ def verify_inputs():
                     f"Invalid field error for {run_id}")
     require(metadata["strong_gpu_seed42"]["training_cost"]["epochs"] == 20000,
             "Strong training must be complete")
+    load_multiseed_residuals()
     return metadata, len(provenance["files"])
 
 
@@ -188,8 +215,32 @@ def control_tables(output):
         balance.append({"model": method, **record["global_balance"],
                         "relative_error_percent": 100 * record["global_balance"]["relative_error"]})
     write_csv(output, "table_4_16.csv", errors)
-    write_csv(output, "figure_4_14_values.csv", residuals)
+    write_csv(output, "strong_control_single_seed_residuals.csv", residuals)
     write_csv(output, "strong_control_global_balance.csv", balance)
+
+
+def multiseed_residual_table(output):
+    records = load_multiseed_residuals()
+    individual, summary = [], []
+    for method in ("strong", "weak"):
+        for seed in SEEDS:
+            individual.append({"formulation": method, "seed": seed, **records[method, seed]})
+        for group in GROUPS:
+            values = [records[method, seed][group] for seed in SEEDS]
+            summary.append({
+                "formulation": method,
+                "equation_group": group,
+                "seed42": values[0],
+                "seed7": values[1],
+                "seed2026": values[2],
+                "mean_normalized_rms": statistics.mean(values),
+                "sample_sd_normalized_rms": statistics.stdev(values),
+                "n": len(values),
+                "sd_ddof": 1,
+                "unit": "dimensionless ratio",
+            })
+    write_csv(output, "figure_4_14_individual_runs.csv", individual)
+    write_csv(output, "figure_4_14_values.csv", summary)
     return records
 
 
@@ -213,18 +264,30 @@ def residual_figure(output, records):
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10, "svg.fonttype": "none",
                          "axes.spines.top": False, "axes.spines.right": False})
     fig, ax = plt.subplots(figsize=(8.2, 3.7), layout="constrained")
-    width = 0.32
-    styles = [("strong_gpu_seed42", -0.5, "#CB6B28", "First-order strong form"),
-              ("original_A", 0.5, "#2468A0", "Local weak form (model A)")]
+    width = 0.30
+    styles = [("strong", -0.5, "#CB6B28", "First-order strong form"),
+              ("weak", 0.5, "#2468A0", "Local weak form (proposed)")]
+    ymax = 0.0
     for method, offset, color, label in styles:
-        values = [records[method]["independent_point_residuals_prior"][group]["normalized_rms"] for group in GROUPS]
-        bars = ax.bar([i + offset * width for i in range(4)], values, width, color=color, label=label, zorder=3)
-        ax.bar_label(bars, labels=[f"{value:.4f}" for value in values], fontsize=8, padding=3)
+        samples = [[records[method, seed][group] for seed in SEEDS] for group in GROUPS]
+        means = [statistics.mean(values) for values in samples]
+        deviations = [statistics.stdev(values) for values in samples]
+        locations = [i + offset * width for i in range(4)]
+        bars = ax.bar(locations, means, width, yerr=deviations, capsize=4,
+                      color=color, label=label, zorder=3)
+        ax.bar_label(bars, labels=[f"{value:.5f}" for value in means], fontsize=8, padding=8)
+        jitter = (-0.035, 0.0, 0.035)
+        for location, values in zip(locations, samples):
+            ax.scatter([location + item for item in jitter], values, s=18, facecolor="white",
+                       edgecolor=color, linewidth=0.75, zorder=5)
+        ymax = max(ymax, max(mean + deviation for mean, deviation in zip(means, deviations)))
     ax.set_xticks(range(4), ["Kinematic", "Constitutive", "Moment-shear", "Transverse equilibrium"])
     ax.set_ylabel("RMS / common prior scale (dimensionless)")
-    ax.set_ylim(0, 0.061)
+    ax.set_ylim(0, ymax * 1.24)
     ax.grid(axis="y", alpha=0.22, zorder=0)
     ax.legend(loc="upper left", frameon=False)
+    ax.text(0.99, 0.98, "Mean ± sample SD (n = 3)", transform=ax.transAxes,
+            ha="right", va="top", fontsize=9, color="#4A4A4A")
     fig.savefig(output / "figure_4_14.png", dpi=300)
     fig.savefig(output / "figure_4_14.svg", metadata={"Date": None})
     plt.close(fig)
@@ -243,13 +306,16 @@ def main():
     canonical_tables(output)
     ablation_tables(output, metadata)
     normalization_table(output)
-    records = control_tables(output)
+    control_tables(output)
+    records = multiseed_residual_table(output)
     runtime_table(output, metadata)
     if not args.no_figure:
         residual_figure(output, records)
     report = {"result_records_verified": verified_count, "original_A_identity_verified": True,
               "independent_CPU_seed42_identity_verified": True, "common_prior_residual_scales_verified": True,
               "normalization_seeds": list(SEEDS), "sample_standard_deviation_ddof": 1,
+              "strong_weak_comparison_seeds": list(SEEDS),
+              "strong_weak_configuration": "pure prior scale chi_f=1.5; linear output heads",
               "field_grid": "201x201", "point_residual_grid": "81x81",
               "operation": "statistics and plots from saved numerical metrics; no model evaluation or training"}
     (output / "verification.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

@@ -1,0 +1,5 @@
+{
+  "_base_": "local_weak_base.json",
+  "seed": 7,
+  "output_dir": "runs/final/local_weak/seed7"
+}

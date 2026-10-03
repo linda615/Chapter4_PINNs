@@ -7,6 +7,8 @@ import subprocess
 import sys
 import unittest
 
+from mixed_weak_pcrb.config import load_config
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -44,6 +46,34 @@ class ReleaseTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 2)
         self.assertIn("--epochs must be positive", result.stderr)
+
+    def test_final_matched_configs(self):
+        for formulation, entrypoint in (("weak", "local_weak"), ("strong", "local_strong")):
+            for seed in (42, 7, 2026):
+                config = load_config(ROOT / f"configs/final/{entrypoint}_seed{seed}.json")
+                self.assertEqual(config["seed"], seed)
+                self.assertIsNone(config["output_scale"])
+                self.assertEqual(config["physics"]["output_scale_margin"], 1.5)
+                self.assertEqual(config["network"]["output_activation"], "linear")
+                self.assertFalse(config["training"]["scale_calibration"]["enabled"])
+                self.assertTrue(config["weak_form"]["residual_normalization"]["enabled"])
+                if formulation == "strong":
+                    self.assertEqual(config["formulation"], "strong")
+                    self.assertEqual(config["loss_form"], "first_order_eight_field_strong")
+
+    def test_final_multiseed_residual_record(self):
+        with (ROOT / "results/raw/strong_control/multiseed_prior_linear_chi1p5.csv").open(
+            encoding="utf-8", newline=""
+        ) as stream:
+            import csv
+
+            rows = list(csv.DictReader(stream))
+        self.assertEqual(
+            {(row["formulation"], int(row["seed"])) for row in rows},
+            {(method, seed) for method in ("strong", "weak") for seed in (42, 7, 2026)},
+        )
+        for row in rows:
+            self.assertTrue(all(float(row[group]) >= 0 for group in ("kinematic", "constitutive", "moment", "equilibrium")))
 
 
 if __name__ == "__main__":

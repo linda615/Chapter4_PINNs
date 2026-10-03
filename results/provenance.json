@@ -109,6 +109,13 @@
       "transformation": "Line endings normalized to LF; numerical values unchanged"
     },
     {
+      "file": "raw/strong_control/multiseed_prior_linear_chi1p5.csv",
+      "sha256": "f5114a66aa1c5cd6c4d4c5eec352df62c6ebc6b560cdcbe5aa4d69f8faa279eb",
+      "source_record": "final_experiment_archive/local_load_plate/figure_data/figure_4_14_residuals.csv",
+      "source_sha256": "f5114a66aa1c5cd6c4d4c5eec352df62c6ebc6b560cdcbe5aa4d69f8faa279eb",
+      "transformation": "The four common-prior normalized RMS values were collected from each final validation record; numerical precision retained"
+    },
+    {
       "file": "raw/chapter3_comparison.json",
       "sha256": "5884ceb76a7e4959b8cf8223cfbd6f8a33533cdf7a3cd302698daa833b0d2911",
       "source_record": "experiment_archive/补充实验/same_case_chapter3_chapter4_201.csv",
@@ -133,8 +140,9 @@
     "reported_result": "one completed final-epoch GPU run; interrupted CPU attempt excluded"
   },
   "limitations": [
-    "Three-seed normalization statistics use sample standard deviation (ddof=1); A-D and strong-control results are single runs.",
+    "Three-seed normalization and final strong/weak statistics use sample standard deviation (ddof=1); A-D and the archived original-A control are single runs.",
     "The original A-D timings, six-run CPU batch timings, and new GPU strong timing come from different execution environments and are not a controlled speed comparison.",
+    "The final matched comparison uses pure problem-prior output scales (chi_f=1.5), linear output heads and seeds 42, 7 and 2026.",
     "The comparison evaluates complete local weak and first-order strong configurations; single-component causal conclusions and broad method rankings are not supported."
   ]
 }

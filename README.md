@@ -18,6 +18,12 @@ Reference implementation and numerical records for Chapter 4, *Local weak-form m
 
 Hidden layers use tanh. Reference solutions are used after training for evaluation and do not supply interior training labels. Stored output scales are part of each experiment and must be retained when loading its checkpoint.
 
+The archived checkpoints above retain their original configurations. The final
+matched experiments used in the revised Section 4.5 are provided separately in
+`configs/final/`: both formulations use the same eight-field architecture,
+`G=8` points, residual schedules, pure problem-prior output scales with
+`chi_f=1.5`, linear output heads and no data-dependent scale calibration.
+
 ## Installation
 
 The experiments used Python 3.9 and TensorFlow 2.10.1. CPU records were obtained with NumPy 1.25.2; the local strong-form GPU run used NumPy 1.23.5. Networks use float32, while field-error norms accumulate in float64.
@@ -90,9 +96,9 @@ python evaluate.py --config configs/ablation/C.json --weights pretrained/ablatio
 
 ## First-order strong-form comparison
 
-The strong baseline uses the same eight outputs, architecture, boundary transforms, output scales and staged optimization as the local Gaussian weak-form case. Its four equation groups are enforced pointwise. This is a first-order comparison inspired by FO-PINN, rather than a reproduction of every network and benchmark in that publication.
+The strong baseline uses the same eight outputs, architecture, boundary transforms, prior scales and staged optimization as the local Gaussian weak-form case. Its four equation groups are enforced pointwise. This is a first-order comparison inspired by FO-PINN, rather than a reproduction of every network and benchmark in that publication.
 
-The supplied strong checkpoint was trained for 20,000 epochs with seed 42. GPU training took **420.6679645 s**, including first graph compilation, the training loop and logging, and excluding evaluation and checkpoint saving. Original A has a historical record of **252.0723079 s**, with incomplete device/thread/compiler metadata. These records do not support a controlled speed comparison.
+The archived checkpoint comparison used the earlier explicit-scale, tanh-head configuration with seed 42. It remains available for exact reevaluation: GPU training took **420.6679645 s**, including first graph compilation, the training loop and logging, and excluding evaluation and checkpoint saving. Original A has a historical record of **252.0723079 s**, with incomplete device/thread/compiler metadata. These records do not support a controlled speed comparison.
 
 `train_strong.py` trains a new model; `evaluate_control.py` reevaluates the archived strong checkpoint and original A on CPU:
 
@@ -103,6 +109,24 @@ python evaluate_control.py --output validation/strong_control_new
 
 Use `--help` for device, checkpoint and output options. Evaluation reports eight field errors, peak errors, boundary and force balance, and independent pointwise residuals normalized by common prior scales.
 
+For the final matched comparison, train both formulations with seeds 42, 7 and
+2026. Each command writes to a distinct directory:
+
+```sh
+python train.py --device gpu --config configs/final/local_weak_seed42.json
+python train.py --device gpu --config configs/final/local_weak_seed7.json
+python train.py --device gpu --config configs/final/local_weak_seed2026.json
+python train_strong.py --device gpu --config configs/final/local_strong_seed42.json
+python train_strong.py --device gpu --config configs/final/local_strong_seed7.json
+python train_strong.py --device gpu --config configs/final/local_strong_seed2026.json
+```
+
+The final Figure 4.14 record contains all six independently trained runs. Bars
+show the mean and sample standard deviation (`ddof=1`, `n=3`), while the white
+markers show individual random seeds. These runs use the final pure-prior,
+linear-head configuration and must not be mixed with the archived seed-42
+checkpoint comparison.
+
 The comparison uses different pointwise normalization from the response-based normalization in the three case tables. Training losses and these two residual conventions must not be compared directly by magnitude. Conclusions apply to this case and its complete configurations.
 
 ## Regenerate tables and Figure 4.14
@@ -111,7 +135,7 @@ The comparison uses different pointwise normalization from the response-based no
 python reproduce_tables.py --output derived
 ```
 
-This requires NumPy and Matplotlib, but no TensorFlow training. It uses numerical records in `results/`, recomputes the three-seed statistics and writes comparison tables and the independent-residual figure. The original-A comparison remains separate from the independently retrained CPU seed-42 pair.
+This requires NumPy and Matplotlib, but no TensorFlow training. It uses numerical records in `results/`, recomputes the three-seed statistics and writes comparison tables and the independent-residual figure. Figure 4.14 uses the final matched strong/weak runs for seeds 42, 7 and 2026; the archived original-A single-seed comparison is emitted separately as `strong_control_single_seed_residuals.csv`.
 
 The Chapter 3 column of Table 4.3 is retained as an archived same-problem comparison record. This repository reevaluates Chapter 4 checkpoints; the Chapter 3 training implementation is outside its scope.
 
